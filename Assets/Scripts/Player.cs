@@ -4,41 +4,73 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float maxSpeed = 5;
-    public float speed = 60.0f;
-    public float jumpPower = 500.0f;
-    public bool grounded;
-    private Rigidbody2D rb2d;
+    public float movementSpeed = 5.0f;
+    public float jumpPower = 12.0f;
+    public int jumpCount = 2;
+
+    [SerializeField] private LayerMask groundCheckLayers;
+
+    private Rigidbody2D rigidBody;
+    private BoxCollider2D playerCollision;
+    private int remainingJumpCount = 2;
+    private bool shouldCheckGroundContact = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        playerCollision = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ( Input.GetButtonDown("Jump") && grounded)
+        if (shouldCheckGroundContact)
         {
-            rb2d.AddForce(Vector2.up * jumpPower * 4);
+            CheckGroundContact();
+            shouldCheckGroundContact = false;
         }
+        if (Input.GetButtonDown("Jump"))
+            TryJump();
     }
 
     private void FixedUpdate()
     {
-        float leftRight = Input.GetAxis("Horizontal");
-        rb2d.AddForce((Vector2.right * speed * 3) * leftRight);
+        float movementInput = Input.GetAxis("Horizontal");
 
-        //player speed limiting
-        if( rb2d.velocity.x > maxSpeed)
+        if (movementInput != 0)
+        { 
+            rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
+        }            
+    }
+
+    private void OnCollisionEnter2D(Collision2D collisionData)
+    {
+        shouldCheckGroundContact = true;
+    }
+
+    private void CheckGroundContact()
+    {
+        if (IsGrounded() && rigidBody.velocity.y == 0.0f)
         {
-            rb2d.velocity = new Vector2(maxSpeed, rb2d.velocity.y);
+            remainingJumpCount = jumpCount;
+            Debug.Log("Replenished!");
         }
+    }
 
-        if( rb2d.velocity.x < -maxSpeed )
+    private bool IsGrounded()
+    {
+        float castDistance = 0.05f;
+        RaycastHit2D downHitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.down, castDistance, groundCheckLayers);
+        return downHitResult.collider != null;
+    }
+
+    private void TryJump()
+    {
+        if (remainingJumpCount > 0)
         {
-            rb2d.velocity = new Vector2(-maxSpeed, rb2d.velocity.y);
+            remainingJumpCount--;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, (Vector2.up * jumpPower).y);
         }
     }
 }
