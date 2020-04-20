@@ -9,7 +9,6 @@ public class FireProjectileBehaviour : WeaponBehaviour
 
     public override void Execute()
     {
-        Debug.Log("FIRE!");
         Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
     }
 }

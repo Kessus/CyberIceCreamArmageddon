@@ -17,19 +17,23 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        // test target
-        Debug.Log(hitInfo.name);
-
-        // damage - implement enemy!!
-
-        /*Enemy enemy = hitInfo.GetComponent<Enemy>();
-        if (enemy != null)
+        if(hitInfo.tag != rb.tag)
         {
-            enemy.TakeDamage(damage);
+            // test target
+            Debug.Log(hitInfo.name);
+
+
+            // damage - implement enemy!!
+
+            /*Enemy enemy = hitInfo.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+            */
+
+            Destroy(gameObject);
         }
-        */
-         
-        Destroy(gameObject);
     }
 
 }

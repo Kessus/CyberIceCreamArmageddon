@@ -8,12 +8,13 @@ public class Player : MonoBehaviour
     public float jumpPower = 12.0f;
     public int jumpCount = 2;
 
-    [SerializeField] private LayerMask groundCheckLayers;
+    [SerializeField] private LayerMask groundCheckLayers = new LayerMask();
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
     private int remainingJumpCount = 2;
     private bool shouldCheckGroundContact = false;
+    private bool isFacingLeft = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,14 +39,22 @@ public class Player : MonoBehaviour
     {
         float movementInput = Input.GetAxis("Horizontal");
 
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Debug.Log(mousePosition.x + " vs " + transform.position.x + ", " + isFacingLeft);
+        if (mousePosition.x > transform.position.x && isFacingLeft)
+        {
+            transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+            isFacingLeft = false;
+        }
+        else if (mousePosition.x < transform.position.x && !isFacingLeft)
+        {
+            transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+            isFacingLeft = true;
+        }
+
         if (movementInput != 0)
         { 
             rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
-            if (movementInput < 0)
-                transform.rotation = Quaternion.Euler(0, 180, 0);
-            else
-                transform.rotation = Quaternion.Euler(0, 0, 0);
-
         }
     }
 
@@ -59,7 +68,6 @@ public class Player : MonoBehaviour
         if (IsGrounded() && rigidBody.velocity.y == 0.0f)
         {
             remainingJumpCount = jumpCount;
-            Debug.Log("Replenished!");
         }
     }
 

@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBehaviour: {fileID: 4585778966743968746}
   triggerKey: Fire1
+  cooldownDuration: 0.25
+  visibilityTime: 0.3
 --- !u!114 &4585778966743968746
 MonoBehaviour:
   m_ObjectHideFlags: 0
