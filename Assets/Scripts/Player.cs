@@ -41,7 +41,12 @@ public class Player : MonoBehaviour
         if (movementInput != 0)
         { 
             rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
-        }            
+            if (movementInput < 0)
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            else
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collisionData)
