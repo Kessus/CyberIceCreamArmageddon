@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 
     public float speed = 20f;
     public Rigidbody2D rb;
-    public int damage = 100;
+    public int damageAmount = 100;
     [SerializeField] private LayerMask ignoredLayers = new LayerMask();
     public float timeToLive = 4.0f;
 
@@ -20,16 +20,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if(hitInfo.tag != rb.tag && hitInfo.gameObject.layer * ignoredLayers == 0)
+        if((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0)
         {
             // test target
             //Debug.Log(hitInfo.name);
 
 
-            Enemy enemy = hitInfo.GetComponent<Enemy>();
-            if (enemy != null)
+            Damage damageScript  = hitInfo.GetComponent<Damage>();
+            if (damageScript != null)
             {
-                enemy.TakeDamage(damage);
+                damageScript.TakeDamage(damageAmount);
             }
 
             Destroy(gameObject);

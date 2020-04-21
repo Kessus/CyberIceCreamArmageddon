@@ -8,9 +8,12 @@ public class Weapon : MonoBehaviour
     public string triggerKey = "Fire1";
     public float cooldownDuration = 0.25f;
     public float visibilityTime = 0.3f;
+    [HideInInspector]
+    public bool reactToButtons = false;
 
-    bool isOnCooldown = false;
-    SpriteRenderer sprite;
+    private bool isOnCooldown = false;
+    private int visibilityChangeCounter = 0;
+    private SpriteRenderer sprite;
 
     void Start()
     {
@@ -19,12 +22,17 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton(triggerKey) && !isOnCooldown)
+        if (Input.GetButton(triggerKey) && !isOnCooldown && reactToButtons)
         {
-            weaponBehaviour.Execute();
-            StartCoroutine(HandleCooldown());
-            StartCoroutine(HandleVisibility());
+            UseWeapon();
         }
+    }
+
+    public void UseWeapon()
+    {
+        weaponBehaviour.Execute();
+        StartCoroutine(HandleCooldown());
+        StartCoroutine(HandleVisibility());
     }
 
     IEnumerator HandleCooldown()
@@ -37,7 +45,10 @@ public class Weapon : MonoBehaviour
     IEnumerator HandleVisibility()
     {
         sprite.enabled = true;
+        visibilityChangeCounter++;
         yield return new WaitForSeconds(visibilityTime);
-        sprite.enabled = false;
+        visibilityChangeCounter--;
+        if(visibilityChangeCounter == 0)
+            sprite.enabled = false;
     }
 }

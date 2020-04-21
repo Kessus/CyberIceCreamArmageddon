@@ -5,15 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float movementSpeed = 5.0f;
-    public float jumpPower = 12.0f;
-    public int jumpCount = 2;
-
-    [SerializeField] private LayerMask groundCheckLayers = new LayerMask();
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
-    private int remainingJumpCount = 2;
-    private bool shouldCheckGroundContact = false;
     private bool isFacingLeft = false;
 
     // Start is called before the first frame update
@@ -21,18 +15,17 @@ public class Player : MonoBehaviour
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         playerCollision = gameObject.GetComponent<BoxCollider2D>();
+
+        Assimilate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shouldCheckGroundContact)
-        {
-            CheckGroundContact();
-            shouldCheckGroundContact = false;
-        }
         if (Input.GetButtonDown("Jump"))
-            TryJump();
+            gameObject.GetComponent<Jumping>().TryJump();
+        if (Input.GetButtonDown("Hijack"))
+            TryHijack();
     }
 
     private void FixedUpdate()
@@ -42,12 +35,12 @@ public class Player : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x > transform.position.x && isFacingLeft)
         {
-            transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+            gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             isFacingLeft = false;
         }
         else if (mousePosition.x < transform.position.x && !isFacingLeft)
         {
-            transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
+            gameObject.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
             isFacingLeft = true;
         }
 
@@ -57,32 +50,40 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collisionData)
+    private void Assimilate()
     {
-        shouldCheckGroundContact = true;
-    }
+        gameObject.layer = LayerMask.NameToLayer("Player");
+        gameObject.tag = "Player";
 
-    private void CheckGroundContact()
-    {
-        if (IsGrounded() && rigidBody.velocity.y < 0.1f)
+        Weapon[] ownedWeapons = gameObject.GetComponentsInChildren<Weapon>();
+        foreach(Weapon weapon in ownedWeapons)
         {
-            remainingJumpCount = jumpCount;
+            weapon.reactToButtons = true;
         }
-    }
 
-    private bool IsGrounded()
-    {
-        float castDistance = 0.05f;
-        RaycastHit2D downHitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.down, castDistance, groundCheckLayers);
-        return downHitResult.collider != null;
-    }
-
-    private void TryJump()
-    {
-        if (remainingJumpCount > 0)
+        HandMovement[] handMovementScripts = gameObject.GetComponentsInChildren<HandMovement>();
+        foreach (HandMovement movementScript in handMovementScripts)
         {
-            remainingJumpCount--;
-            rigidBody.velocity = new Vector2(rigidBody.velocity.x, (Vector2.up * jumpPower).y);
+            movementScript.aimTowardsPlayer = false;
         }
+
+        Enemy EnemyScript = gameObject.GetComponent<Enemy>();
+        if (EnemyScript != null)
+            Destroy(EnemyScript);
+
+        Camera.main.GetComponent<CameraFollow>().player = transform;
+    }
+
+    private void TryHijack()
+    {
+        float castDistance = 2.0f;
+        RaycastHit2D hitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.right, castDistance, LayerMask.GetMask("Enemy"));
+        if (hitResult.collider == null)
+            return;
+
+        GameObject hijackTarget = hitResult.collider.gameObject;
+
+        hijackTarget.AddComponent<Player>();
+        Destroy(gameObject);
     }
 }
