@@ -40,7 +40,6 @@ public class Player : MonoBehaviour
         float movementInput = Input.GetAxis("Horizontal");
 
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log(mousePosition.x + " vs " + transform.position.x + ", " + isFacingLeft);
         if (mousePosition.x > transform.position.x && isFacingLeft)
         {
             transform.Rotate(0.0f, 180.0f, 0.0f, Space.Self);
@@ -65,7 +64,7 @@ public class Player : MonoBehaviour
 
     private void CheckGroundContact()
     {
-        if (IsGrounded() && rigidBody.velocity.y == 0.0f)
+        if (IsGrounded() && rigidBody.velocity.y < 0.1f)
         {
             remainingJumpCount = jumpCount;
         }
