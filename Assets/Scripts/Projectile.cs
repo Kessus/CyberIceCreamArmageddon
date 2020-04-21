@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 
     public float speed = 20f;
     public Rigidbody2D rb;
-    public int damage = 40;
+    public int damage = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +20,14 @@ public class Projectile : MonoBehaviour
         if(hitInfo.tag != rb.tag)
         {
             // test target
-            Debug.Log(hitInfo.name);
+            //Debug.Log(hitInfo.name);
 
 
-            // damage - implement enemy!!
-
-            /*Enemy enemy = hitInfo.GetComponent<Enemy>();
+            Enemy enemy = hitInfo.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
             }
-            */
 
             Destroy(gameObject);
         }
