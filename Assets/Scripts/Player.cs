@@ -23,7 +23,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Jump"))
-            gameObject.GetComponent<Jumping>().TryJump();
+        {
+            Jumping jumpScript = gameObject.GetComponent<Jumping>();
+            if (Input.GetAxis("Vertical") < -0.5f)
+                StartCoroutine(jumpScript.TryJumpOffPlatform());
+            else
+                jumpScript.TryJump();
+        }
+            
         if (Input.GetButtonDown("Hijack"))
             TryHijack();
     }

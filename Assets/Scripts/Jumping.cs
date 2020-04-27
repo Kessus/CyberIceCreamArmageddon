@@ -41,6 +41,20 @@ public class Jumping : MonoBehaviour
         }
     }
 
+    public IEnumerator TryJumpOffPlatform()
+    {
+        RaycastHit2D platform = TryGetGroundObject();
+        if (platform.collider != null && platform.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+        {
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), true);
+            platform.collider.usedByEffector = false;
+            yield return new WaitForSeconds(0.5f);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), false);
+            platform.collider.usedByEffector = true;
+        }
+
+    }
+
     private void OnCollisionEnter2D(Collision2D collisionData)
     {
         shouldCheckGroundContact = true;
@@ -56,8 +70,13 @@ public class Jumping : MonoBehaviour
 
     private bool IsGrounded()
     {
-        float castDistance = 0.05f;
-        RaycastHit2D downHitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.down, castDistance, groundCheckLayers);
+        RaycastHit2D downHitResult = TryGetGroundObject();
         return downHitResult.collider != null;
+    }
+
+    private RaycastHit2D TryGetGroundObject()
+    {
+        float castDistance = 0.05f;
+        return Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.down, castDistance, groundCheckLayers);
     }
 }

@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2869947841dd67349a0f78978799c9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimTowardsPlayer: 0
 --- !u!1 &3472344513789823372
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +194,7 @@ MonoBehaviour:
   jumpCount: 2
   groundCheckLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2304
 --- !u!114 &8368740512655937203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +251,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2869947841dd67349a0f78978799c9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimTowardsPlayer: 0
