@@ -6,14 +6,17 @@ public class Weapon : MonoBehaviour
 {
     public WeaponBehaviour weaponBehaviour;
     public string triggerKey = "Fire1";
+    public bool isAutomatic = false;
     public float cooldownDuration = 0.25f;
     public float visibilityTime = 0.3f;
+
     [HideInInspector]
     public bool reactToButtons = false;
 
     private bool isOnCooldown = false;
     private int visibilityChangeCounter = 0;
     private SpriteRenderer sprite;
+    private bool pulledTrigger = false;
 
     void Start()
     {
@@ -22,15 +25,23 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton(triggerKey) && !isOnCooldown && reactToButtons)
+        if (!pulledTrigger || isAutomatic)
         {
-            UseWeapon();
+            if (Input.GetButton(triggerKey) && !isOnCooldown && reactToButtons)
+            {
+                pulledTrigger = true;
+                UseWeapon();
+            }
+        }
+        else
+        {
+            pulledTrigger = Input.GetButton(triggerKey) || isOnCooldown;
         }
     }
 
     public void UseWeapon()
     {
-        weaponBehaviour.Execute();
+        weaponBehaviour.Execute(gameObject.layer == LayerMask.NameToLayer("Player"));
         StartCoroutine(HandleCooldown());
         StartCoroutine(HandleVisibility());
     }

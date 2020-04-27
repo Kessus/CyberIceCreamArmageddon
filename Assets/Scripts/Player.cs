@@ -59,8 +59,12 @@ public class Player : MonoBehaviour
 
     private void Assimilate()
     {
-        gameObject.layer = LayerMask.NameToLayer("Player");
-        gameObject.tag = "Player";
+        Transform[] children = gameObject.GetComponentsInChildren<Transform>(true);
+        foreach(Transform child in children)
+        {
+            child.gameObject.layer = LayerMask.NameToLayer("Player");
+            child.tag = "Player";
+        }
 
         Weapon[] ownedWeapons = gameObject.GetComponentsInChildren<Weapon>();
         foreach(Weapon weapon in ownedWeapons)

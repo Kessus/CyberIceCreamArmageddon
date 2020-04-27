@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3179018804905375219}
   - component: {fileID: 4585778966743968746}
   m_Layer: 0
-  m_Name: gun
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,8 +98,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponBehaviour: {fileID: 4585778966743968746}
   triggerKey: Fire1
+  isAutomatic: 0
   cooldownDuration: 0.25
   visibilityTime: 0.3
+  reactToButtons: 0
 --- !u!114 &4585778966743968746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56623074a710f843bb07d5d42d1a1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
+  projectileType: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
     type: 3}
   firePoint: {fileID: 6764466180484345296}
 --- !u!1 &6764466180484345296

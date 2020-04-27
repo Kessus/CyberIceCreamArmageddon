@@ -80,10 +80,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 6764466179450837057, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6764466179450837063, guid: 5adad43d4f750094d861ebb304200308,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764466180484345296, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5adad43d4f750094d861ebb304200308, type: 3}
@@ -94,6 +104,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1097857525152004874, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1633458973328306025, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: jumpCount
@@ -179,6 +194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4626609093687714543, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5138572644322810340, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
