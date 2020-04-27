@@ -16,11 +16,29 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         rb.velocity = transform.right * (speed + Random.Range(-speedVariation, speedVariation));
-        gameObject.layer = LayerMask.NameToLayer(transform.parent.gameObject.layer == LayerMask.NameToLayer("Player") ? "PlayerProjectile" : "EnemyProjectile");
-        Vector3 position = transform.position;
-        transform.SetParent(null, false);
-        transform.position = position;
         StartCoroutine(DespawnTimer());
+    }
+
+    public static GameObject CreateProjectile(GameObject projectile, GameObject weapon)
+    {
+        WeaponBehaviour behaviour = weapon.GetComponent<WeaponBehaviour>();
+
+        GameObject createdProjectile = Instantiate(projectile, behaviour.firePoint.transform.position, behaviour.firePoint.transform.rotation);
+
+        if(weapon.layer == LayerMask.NameToLayer("Player"))
+        {
+            createdProjectile.gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
+            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("PlayerProjectile"));
+            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("Player"));
+        }
+        else
+        {
+            createdProjectile.gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
+            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("Enemy"));
+            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("EnemyProjectile"));
+        }
+
+        return createdProjectile;
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)

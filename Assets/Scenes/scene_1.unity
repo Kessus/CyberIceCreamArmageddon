@@ -537,6 +537,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37824ee59a69ed34a8205ad99250b87f, type: 3}
+--- !u!1 &359901984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4019349907997413569, guid: 889c37deb1b38a345b5a88897f45e328,
+    type: 3}
+  m_PrefabInstance: {fileID: 2533271022372816681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &418310349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1037,55 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2090314273}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1062097329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1062097331}
+  - component: {fileID: 1062097330}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1062097330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062097329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c067d8f79f68baf47984200ebadd6e8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponBehaviour: {fileID: 0}
+  triggerKey: Fire1
+  isAutomatic: 0
+  cooldownDuration: 0.25
+  visibilityTime: 0.3
+  reactToButtons: 0
+--- !u!4 &1062097331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062097329}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.2322865, y: 3.1694722, z: -51.83415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1096729758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5393352841778813045, guid: da2850e0318604745840a3ea87c88c8f,
@@ -1319,10 +1374,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a36835ad9dbc040acbbceccea2a58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileCount: 16
   projectileType: {fileID: 1977706086038978559, guid: fffe3a7d5ad7d0845a3a8cbfb4fe8023,
     type: 3}
   firePoint: {fileID: 1043540345}
+  projectileCount: 16
   maxSpreadAngle: 20
   knockbackDistance: 100
 --- !u!1 &1791856608
@@ -1711,6 +1766,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
+    - target: {fileID: 6162150213965158139, guid: 889c37deb1b38a345b5a88897f45e328,
+        type: 3}
+      propertyPath: projectileType
+      value: 
+      objectReference: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+    - target: {fileID: 6162150213965158139, guid: 889c37deb1b38a345b5a88897f45e328,
+        type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 359901984}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889c37deb1b38a345b5a88897f45e328, type: 3}
 --- !u!1001 &2598307274583382815

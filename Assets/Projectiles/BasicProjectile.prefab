@@ -138,6 +138,6 @@ MonoBehaviour:
   damageAmount: 40
   ignoredLayers:
     serializedVersion: 2
-    m_Bits: 5376
+    m_Bits: 256
   timeToLive: 4
   speedVariation: 5

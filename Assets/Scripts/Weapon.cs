@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
 
     public void UseWeapon()
     {
-        weaponBehaviour.Execute(gameObject.layer == LayerMask.NameToLayer("Player"));
+        weaponBehaviour.Execute();
         StartCoroutine(HandleCooldown());
         StartCoroutine(HandleVisibility());
     }

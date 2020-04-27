@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class FireProjectile : WeaponBehaviour
 {
-    public GameObject projectileType;
-    public GameObject firePoint;
-
-    public override void Execute(bool firedByPlayer)
+    public override void Execute()
     {
-        GameObject projectileInstance = Instantiate(projectileType, firePoint.transform.position, firePoint.transform.rotation, firePoint.transform);
+        GameObject projectileInstance = Projectile.CreateProjectile(projectileType, gameObject);
     }
 }

@@ -4,5 +4,8 @@ using UnityEngine;
 
 public abstract class WeaponBehaviour : MonoBehaviour
 {
-    public abstract void Execute(bool firedByPlayer);
+    public GameObject projectileType;
+    public GameObject firePoint;
+
+    public abstract void Execute();
 }
