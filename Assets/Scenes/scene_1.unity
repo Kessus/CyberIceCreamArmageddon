@@ -813,6 +813,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  xBoundaries: {x: -2, y: 2}
+  yBoundaries: {x: 0.5, y: 5}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
