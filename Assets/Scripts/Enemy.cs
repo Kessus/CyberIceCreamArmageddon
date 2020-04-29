@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
 
     private Path path;
     private int currentWaypoint = 0;
-    private bool reachedEndOfPath = false;
     private Seeker seeker;
     private Rigidbody2D rb;
 
@@ -49,29 +48,26 @@ public class Enemy : MonoBehaviour
     {
         if (path == null)
             return;
-
-        if (currentWaypoint >= path.vectorPath.Count)
+        else if (currentWaypoint >= path.vectorPath.Count)
         {
-            reachedEndOfPath = true;
             return;
         }
-            else
-            {
-                reachedEndOfPath = false;
-            }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = new Vector2(direction.x * speed, rb.velocity.y);
 
         rb.velocity = force;
-
-        if( direction.y > 0.65f )
+        if(direction.y != 1.0f)
         {
-            GetComponent<Jumping>().TryJump();
-        }
-        else if ( direction.y < -0.65f )
-        {
-            GetComponent<Jumping>().TryJumpOffPlatform();
+            Jumping jumpScript = gameObject.GetComponent<Jumping>();
+            if (direction.y > 0.65f)
+            {
+                jumpScript.TryJump();
+            }
+            else if (direction.y < -0.65f)
+            {
+                StartCoroutine(jumpScript.TryJumpOffPlatform());
+            }
         }
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

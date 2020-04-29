@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     public float timeToLive = 4.0f;
     public float speedVariation = 0.0f;
 
+    private bool hasDealtDamage = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,14 +45,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0)
+        if((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
         {
             Damage damageScript  = hitInfo.GetComponent<Damage>();
             if (damageScript != null)
             {
                 damageScript.TakeDamage(damageAmount);
             }
-
+            hasDealtDamage = true;
             Destroy(gameObject);
         }
     }

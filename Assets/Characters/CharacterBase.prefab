@@ -192,6 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpPower: 12
   jumpCount: 2
+  jumpCooldown: 0
   groundCheckLayers:
     serializedVersion: 2
     m_Bits: 2304

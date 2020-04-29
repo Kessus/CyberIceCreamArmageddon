@@ -431,20 +431,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3649108648006264046, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: jumpCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: speed
-      value: 5
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2850e0318604745840a3ea87c88c8f, type: 3}
@@ -558,40 +548,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2533271022372816681}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &380598471 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1458942267756134923, guid: da2850e0318604745840a3ea87c88c8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1012873327}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &380598479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 380598471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!1 &418310349
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,40 +952,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37824ee59a69ed34a8205ad99250b87f, type: 3}
---- !u!1 &954767711 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1458942267756134923, guid: da2850e0318604745840a3ea87c88c8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1270213171}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &954767719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954767711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!1001 &1012873327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1037,11 +959,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1458942267756134921, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1458942267756134923, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
       propertyPath: m_Name
@@ -1117,20 +1034,10 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3649108648006264046, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: jumpCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: speed
-      value: 5
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2850e0318604745840a3ea87c88c8f, type: 3}
@@ -1195,40 +1102,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1012873327}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1141474295 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1458942267756134923, guid: da2850e0318604745840a3ea87c88c8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 331742945}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1141474303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141474295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!1 &1155106584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,40 +1183,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1167946375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1458942267756134923, guid: da2850e0318604745840a3ea87c88c8f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2598307274583382815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1167946385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167946375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
 --- !u!1001 &1270213171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1411,20 +1250,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3649108648006264046, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: jumpCount
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: speed
-      value: 5
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2850e0318604745840a3ea87c88c8f, type: 3}
@@ -1586,7 +1415,7 @@ MonoBehaviour:
   manualDebugFloorRoof: 0
   showSearchTree: 0
   unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
+  logPathResults: 0
   maxNearestNodeDistance: 100
   scanOnStartup: 1
   fullGetNearestSearch: 0
@@ -1881,12 +1710,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37824ee59a69ed34a8205ad99250b87f, type: 3}
---- !u!4 &2084720985 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5473667362616088507, guid: 889c37deb1b38a345b5a88897f45e328,
-    type: 3}
-  m_PrefabInstance: {fileID: 2533271022372816681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2090314273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2096,11 +1919,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1458942267756134921, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1458942267756134923, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
       propertyPath: m_Name
@@ -2160,31 +1978,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3112925403568468109, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3649108648006264046, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: jumpCount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7222101197426616680, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 2084720985}
-    - target: {fileID: 8003989635584609195, guid: da2850e0318604745840a3ea87c88c8f,
-        type: 3}
-      propertyPath: speed
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da2850e0318604745840a3ea87c88c8f, type: 3}

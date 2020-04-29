@@ -12,15 +12,16 @@ public class Jumping : MonoBehaviour
     private LayerMask groundCheckLayers = new LayerMask();
 
     private Rigidbody2D rigidBody;
-    private BoxCollider2D playerCollision;
+    private BoxCollider2D characterCollision;
     private int remainingJumpCount = 2;
     private bool shouldCheckGroundContact = false;
     private bool jumpOnCooldown = false;
+    private bool isJumpingOff = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerCollision = gameObject.GetComponent<BoxCollider2D>();
+        characterCollision = gameObject.GetComponent<BoxCollider2D>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
@@ -54,15 +55,14 @@ public class Jumping : MonoBehaviour
     public IEnumerator TryJumpOffPlatform()
     {
         RaycastHit2D platform = TryGetGroundObject();
-        if (platform.collider != null && platform.collider.gameObject.layer == LayerMask.NameToLayer("Platform"))
+        if (platform.collider != null && platform.collider.gameObject.layer == LayerMask.NameToLayer("Platform") && !isJumpingOff)
         {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), true);
-            platform.collider.usedByEffector = false;
+            Physics2D.IgnoreCollision(characterCollision, platform.collider, true);
+            isJumpingOff = true;
             yield return new WaitForSeconds(0.5f);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Platform"), false);
-            platform.collider.usedByEffector = true;
+            Physics2D.IgnoreCollision(characterCollision, platform.collider, false);
+            isJumpingOff = false;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collisionData)
@@ -72,7 +72,7 @@ public class Jumping : MonoBehaviour
 
     private void CheckGroundContact()
     {
-        if (IsGrounded() && rigidBody.velocity.y < 0.1f)
+        if (IsGrounded() && rigidBody.velocity.y < 0.1f && rigidBody.velocity.y > -0.1f)
         {
             remainingJumpCount = jumpCount;
         }
@@ -87,6 +87,6 @@ public class Jumping : MonoBehaviour
     private RaycastHit2D TryGetGroundObject()
     {
         float castDistance = 0.05f;
-        return Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.down, castDistance, groundCheckLayers);
+        return Physics2D.BoxCast(characterCollision.bounds.min, new Vector2(characterCollision.bounds.size.x, characterCollision.bounds.size.y / 10), 0.0f, Vector2.down, castDistance, groundCheckLayers);
     }
 }
