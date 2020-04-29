@@ -6,6 +6,7 @@ public class Jumping : MonoBehaviour
 {
     public float jumpPower = 12.0f;
     public int jumpCount = 2;
+    public float jumpCooldown = 0.0f;
 
     [SerializeField]
     private LayerMask groundCheckLayers = new LayerMask();
@@ -14,6 +15,7 @@ public class Jumping : MonoBehaviour
     private BoxCollider2D playerCollision;
     private int remainingJumpCount = 2;
     private bool shouldCheckGroundContact = false;
+    private bool jumpOnCooldown = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,12 +36,20 @@ public class Jumping : MonoBehaviour
 
     public void TryJump()
     {
-        if (remainingJumpCount > 0)
+        if (remainingJumpCount > 0 && !jumpOnCooldown)
         {
             remainingJumpCount--;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, (Vector2.up * jumpPower).y);
+            StartCoroutine(HandleJumpCooldown());
         }
     }
+
+    private IEnumerator HandleJumpCooldown()
+    {
+        jumpOnCooldown = true;
+        yield return new WaitForSeconds(jumpCooldown);
+        jumpOnCooldown = false;
+   }
 
     public IEnumerator TryJumpOffPlatform()
     {

@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
         Enemy EnemyScript = gameObject.GetComponent<Enemy>();
         if (EnemyScript != null)
-            Destroy(EnemyScript);
+            EnemyScript.enabled = false;
 
         Camera.main.GetComponent<CameraFollow>().player = transform;
     }

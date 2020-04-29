@@ -12,6 +12,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e52969b3c652974180dab9a0833b71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  nextWaypointDistance: 3
+--- !u!114 &1462426998778260048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458942267756134923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1001 &2598307275597695879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19,6 +49,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1633458973328306025, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: jumpCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633458973328306025, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: jumpCooldown
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3472344513789823372, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_Name
@@ -28,6 +68,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3472344513789823374, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3472344513789823376, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
