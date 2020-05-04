@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HandMovement : MonoBehaviour
 {
-    public bool aimTowardsPlayer = false;
+    public bool aimTowardsPlayer = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,10 @@ public class HandMovement : MonoBehaviour
     void Update()
     {
         Vector3 targetPosition;
+
+        if (Camera.main.GetComponent<CameraFollow>().player == null)
+            return;
+
         if (aimTowardsPlayer)
             targetPosition = Camera.main.GetComponent<CameraFollow>().player.position;
         else

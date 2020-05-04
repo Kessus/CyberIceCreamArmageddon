@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movementSpeed = 5.0f;
+    public float movementSpeed = 8.0f;
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
@@ -72,17 +72,14 @@ public class Player : MonoBehaviour
             weapon.reactToButtons = true;
         }
 
-        HandMovement[] handMovementScripts = gameObject.GetComponentsInChildren<HandMovement>();
-        foreach (HandMovement movementScript in handMovementScripts)
-        {
-            movementScript.aimTowardsPlayer = false;
-        }
-
         Enemy EnemyScript = gameObject.GetComponent<Enemy>();
         if (EnemyScript != null)
             EnemyScript.enabled = false;
 
         Camera.main.GetComponent<CameraFollow>().player = transform;
+
+        GetComponent<Damage>().IsPlayer = true;
+
     }
 
     private void TryHijack()
@@ -94,7 +91,10 @@ public class Player : MonoBehaviour
 
         GameObject hijackTarget = hitResult.collider.gameObject;
 
+        hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
+
         hijackTarget.AddComponent<Player>();
+
         Destroy(gameObject);
     }
 }

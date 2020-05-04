@@ -8,11 +8,14 @@ public class Enemy : MonoBehaviour
 
     public float speed = 1f;
     public float nextWaypointDistance = 3f;
+    public float playerShootDistance = 8.0f;
 
     private Path path;
     private int currentWaypoint = 0;
     private Seeker seeker;
     private Rigidbody2D rb;
+    private bool isFacingLeft = false;
+    private bool canShoot = false;
 
     private void Start()
     {
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
+        InvokeRepeating("ShootAtPlayer", Random.Range(1.0f, 3.0f), 2.0f);
 
     }
 
@@ -35,6 +39,25 @@ public class Enemy : MonoBehaviour
             
     }
 
+    private void ShootAtPlayer()
+    {
+        if(canShoot)
+            GetComponentInChildren<Weapon>().UseWeapon();
+    }
+
+    private void OnDisable()
+    {
+        CancelInvoke();
+
+        GetComponent<Seeker>().enabled = false;
+
+        HandMovement[] handMovementScripts = gameObject.GetComponentsInChildren<HandMovement>();
+        foreach (HandMovement movementScript in handMovementScripts)
+        {
+            movementScript.aimTowardsPlayer = false;
+        }
+    }
+
     void OnPathComplete(Path p)
     {
         if(!p.error)
@@ -46,36 +69,63 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (path == null)
+        if (Camera.main.GetComponent<CameraFollow>().player == null)
             return;
-        else if (currentWaypoint >= path.vectorPath.Count)
+        Vector3 playerPosition = Camera.main.GetComponent<CameraFollow>().player.position;
+        if (playerPosition.x > transform.position.x && isFacingLeft)
         {
-            return;
+            gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            isFacingLeft = false;
+        }
+        else if (playerPosition.x < transform.position.x && !isFacingLeft)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            isFacingLeft = true;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = new Vector2(direction.x * speed, rb.velocity.y);
+        RaycastHit2D enemyLineOfSight =  Physics2D.Linecast(transform.position, playerPosition, 1 << LayerMask.NameToLayer("Ground"));
 
-        rb.velocity = force;
-        if(direction.y != 1.0f)
+        if ((playerPosition - transform.position).magnitude > playerShootDistance || enemyLineOfSight.collider != null)
         {
-            Jumping jumpScript = gameObject.GetComponent<Jumping>();
-            if (direction.y > 0.65f)
+            if (path == null)
+                return;
+            else if (currentWaypoint >= path.vectorPath.Count)
             {
-                jumpScript.TryJump();
+                return;
             }
-            else if (direction.y < -0.65f)
+
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = new Vector2(direction.x * speed, rb.velocity.y);
+
+            rb.velocity = force;
+            if (direction.y != 1.0f)
             {
-                StartCoroutine(jumpScript.TryJumpOffPlatform());
+                Jumping jumpScript = gameObject.GetComponent<Jumping>();
+                if (direction.y > 0.35f)
+                {
+                    jumpScript.TryJump();
+                }
+                else if (direction.y < -0.35f)
+                {
+                    StartCoroutine(jumpScript.TryJumpOffPlatform());
+                }
             }
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
+
+            canShoot = false;
         }
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if(distance < nextWaypointDistance)
+        else
         {
-            currentWaypoint++;
+            canShoot = true;
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
         }
+        
     }
 
 
