@@ -9,6 +9,13 @@ public class Enemy : MonoBehaviour
     public float speed = 1f;
     public float nextWaypointDistance = 3f;
     public float playerShootDistance = 8.0f;
+    public GameObject healthBar = null;
+    public bool CanBeHijacked { get
+        {
+            Damage damageScript = GetComponent<Damage>();
+            return (float)(damageScript.bodyHealth) / damageScript.maxBodyHealth <= 0.5f;
+        }
+    }
 
     private Path path;
     private int currentWaypoint = 0;
@@ -56,6 +63,7 @@ public class Enemy : MonoBehaviour
         {
             movementScript.aimTowardsPlayer = false;
         }
+        Destroy(healthBar);
     }
 
     void OnPathComplete(Path p)

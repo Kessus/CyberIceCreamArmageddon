@@ -10,6 +10,9 @@ public class Damage : MonoBehaviour
     public float goggleFatigueDamagePercent = 0.15f;
     public float fatigueDelay = 6.0f;
     public float fatigueFrequency = 1.0f;
+    public HealthBarBody healthBarScript;
+    public HealthBarBody goggleHealthBarScript;
+
     [HideInInspector]
     public bool IsPlayer {
         get {
@@ -33,6 +36,14 @@ public class Damage : MonoBehaviour
     {
         bodyHealth = maxBodyHealth;
         goggleHealth = maxGoggleHealth;
+        healthBarScript.SetMaxHealth(maxBodyHealth);
+        healthBarScript.SetHealth(bodyHealth);
+
+        if(goggleHealthBarScript != null)
+        {
+            goggleHealthBarScript.SetMaxHealth(goggleHealth);
+            goggleHealthBarScript.SetHealth(goggleHealth);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -40,6 +51,7 @@ public class Damage : MonoBehaviour
         if (!isPlayer)
         {
             bodyHealth -= damage;
+            healthBarScript.SetHealth(Mathf.Clamp(bodyHealth, 0, maxBodyHealth));
 
             if (bodyHealth <= 0)
             {
@@ -51,9 +63,12 @@ public class Damage : MonoBehaviour
             bodyHealth -= damage;
             int damageLeft = -bodyHealth;
             bodyHealth = Mathf.Clamp(bodyHealth, 0, maxBodyHealth);
+            healthBarScript.SetHealth(bodyHealth);
+
             if(damageLeft > 0)
             {
                 goggleHealth -= damageLeft;
+                goggleHealthBarScript.SetHealth(Mathf.Clamp(goggleHealth, 0, maxGoggleHealth));
                 if (goggleHealth <= 0)
                     Die();
             }
@@ -62,7 +77,12 @@ public class Damage : MonoBehaviour
 
     public void RegisterAssimilation(Damage damageScript)
     {
+        bodyHealth = maxBodyHealth;
         goggleHealth = damageScript.goggleHealth;
+        healthBarScript = damageScript.healthBarScript;
+        goggleHealthBarScript = damageScript.goggleHealthBarScript;
+        healthBarScript.SetMaxHealth(maxBodyHealth);
+        healthBarScript.SetHealth(bodyHealth);
     }
 
     private void DealFatigueDamage()

@@ -88,13 +88,15 @@ public class Player : MonoBehaviour
         RaycastHit2D hitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.right, castDistance, LayerMask.GetMask("Enemy"));
         if (hitResult.collider == null)
             return;
-
         GameObject hijackTarget = hitResult.collider.gameObject;
 
-        hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
+        if (hijackTarget.GetComponent<Enemy>().CanBeHijacked)
+        {
+            hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
 
-        hijackTarget.AddComponent<Player>();
+            hijackTarget.AddComponent<Player>();
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
