@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4066368316657625443}
     m_Modifications:
+    - target: {fileID: 4585778966743968746, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: projectileType
+      value: 
+      objectReference: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
     - target: {fileID: 6764466179450837056, guid: 5adad43d4f750094d861ebb304200308,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,10 +68,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6764466179450837056, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764466179450837056, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764466179450837056, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6764466179450837057, guid: 5adad43d4f750094d861ebb304200308,
         type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764466179450837057, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764466180484345296, guid: 5adad43d4f750094d861ebb304200308,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5adad43d4f750094d861ebb304200308, type: 3}
@@ -134,6 +165,16 @@ PrefabInstance:
     - target: {fileID: 1458942267756134934, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001154549622932373, guid: da2850e0318604745840a3ea87c88c8f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6001154549622932373, guid: da2850e0318604745840a3ea87c88c8f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

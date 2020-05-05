@@ -5,22 +5,18 @@ using UnityEngine;
 public class HandMovement : MonoBehaviour
 {
     public bool aimTowardsPlayer = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 targetPosition;
+        Transform playerTransform = Camera.main.GetComponent<CameraFollow>().player;
 
-        if (Camera.main.GetComponent<CameraFollow>().player == null)
+        if (playerTransform == null)
             return;
 
         if (aimTowardsPlayer)
-            targetPosition = Camera.main.GetComponent<CameraFollow>().player.position;
+            targetPosition = playerTransform.position;
         else
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         targetPosition = new Vector3(targetPosition.x, targetPosition.y, 0.0f);

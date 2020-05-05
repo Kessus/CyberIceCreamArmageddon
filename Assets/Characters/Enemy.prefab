@@ -51,6 +51,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1097857525152004874, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1633458973328306025, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: jumpCount
@@ -146,6 +151,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4626609093687714543, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5590534656493050580, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: aimTowardsPlayer
@@ -192,6 +202,16 @@ PrefabInstance:
       propertyPath: fill
       value: 
       objectReference: {fileID: 6001154549622932372}
+    - target: {fileID: 2251015485236121314, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251015485236121324, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2251015485236121325, guid: 9898e713fa4028c43a79b7bd2b97c221,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -205,7 +225,12 @@ PrefabInstance:
     - target: {fileID: 2251015485425273601, guid: 9898e713fa4028c43a79b7bd2b97c221,
         type: 3}
       propertyPath: m_Name
-      value: HealtBar
+      value: HealthBarContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251015485425273601, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2251015485425273602, guid: 9898e713fa4028c43a79b7bd2b97c221,
         type: 3}
@@ -332,6 +357,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2251015485516245813, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251015485953236396, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2251015485953236398, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9898e713fa4028c43a79b7bd2b97c221, type: 3}
 --- !u!1 &6001154549307721337 stripped
@@ -359,7 +399,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 5509403092704660856}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

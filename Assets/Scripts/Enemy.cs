@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
             return (float)(damageScript.bodyHealth) / damageScript.maxBodyHealth <= 0.5f;
         }
     }
-
+    
     private Path path;
     private int currentWaypoint = 0;
     private Seeker seeker;
@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, .5f);
         InvokeRepeating("ShootAtPlayer", Random.Range(1.0f, 3.0f), 2.0f);
 
+        SpawnerManager.mainManager.RegisterEnemySpawn();
     }
 
     void UpdatePath()
@@ -64,6 +65,8 @@ public class Enemy : MonoBehaviour
             movementScript.aimTowardsPlayer = false;
         }
         Destroy(healthBar);
+
+        SpawnerManager.mainManager.RegisterEnemyDeath();
     }
 
     void OnPathComplete(Path p)

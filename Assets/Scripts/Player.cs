@@ -80,6 +80,8 @@ public class Player : MonoBehaviour
 
         GetComponent<Damage>().IsPlayer = true;
 
+        GetComponent<Jumping>().jumpCooldown = 0.0f;
+
     }
 
     private void TryHijack()

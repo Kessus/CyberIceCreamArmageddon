@@ -10,6 +10,8 @@ public class HealthBarBody : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
+    private bool isInitialized = false;
+
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
@@ -23,5 +25,18 @@ public class HealthBarBody : MonoBehaviour
         slider.value = health;
 
         fill.color = gradient.Evaluate(slider.normalizedValue);
+        if (!isInitialized)
+        {
+            isInitialized = true;
+        }
+        else
+        {
+            Image[] imageComponents = gameObject.GetComponentsInChildren<Image>();
+            foreach (Image image in imageComponents)
+            {
+                if (!image.enabled)
+                    image.enabled = true;
+            }
+        }
     }
 }
