@@ -237,6 +237,11 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2251015485425273602, guid: 9898e713fa4028c43a79b7bd2b97c221,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2251015485425273613, guid: 9898e713fa4028c43a79b7bd2b97c221,
         type: 3}
       propertyPath: m_LocalPosition.x

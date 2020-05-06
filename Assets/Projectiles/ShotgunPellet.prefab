@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   rb: {fileID: 4625291252273694089}
-  damageAmount: 12
+  damageAmount: 1
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 256
