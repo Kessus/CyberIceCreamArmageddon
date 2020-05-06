@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour
         if (spawnedEnemyPrefabs.Count > 0)
             Instantiate(spawnedEnemyPrefabs[Random.Range(0, spawnedEnemyPrefabs.Count)], transform.position, transform.rotation);
         else
-            Debug.Log("Spawner has no assigned enemy prefabs: " + transform.name);
+            Debug.LogError("Spawner has no assigned enemy prefabs: " + transform.name);
     }
 
     private void Start()
@@ -24,12 +24,10 @@ public class Spawner : MonoBehaviour
     private void OnBecameInvisible()
     {
         IsReady = true;
-        Debug.Log("I'm invisible");
     }
 
     private void OnBecameVisible()
     {
         IsReady = false;
-        Debug.Log("I'm visible");
     }
 }
