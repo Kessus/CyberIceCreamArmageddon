@@ -50,6 +50,9 @@ public class Damage : MonoBehaviour
     {
         if (!isPlayer)
         {
+            //For testing purposes
+            damage *= 5;
+
             bodyHealth -= damage;
             healthBarScript.SetHealth(Mathf.Clamp(bodyHealth, 0, maxBodyHealth));
 
