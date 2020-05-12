@@ -25,6 +25,9 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        if (InGameUi.IsGamePaused)
+            return;
+
         if (!pulledTrigger || isAutomatic)
         {
             if (Input.GetButton(triggerKey) && !isOnCooldown && reactToButtons)

@@ -9,6 +9,9 @@ public class HandMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (InGameUi.IsGamePaused)
+            return;
+
         Vector3 targetPosition;
         Transform playerTransform = Camera.main.GetComponent<CameraFollow>().player;
 

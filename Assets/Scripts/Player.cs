@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     {
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         playerCollision = gameObject.GetComponent<BoxCollider2D>();
+        isFacingLeft = transform.rotation.y != 0.0f;
 
         Assimilate();
     }
@@ -22,6 +23,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (InGameUi.IsGamePaused)
+            return;
+
         if (Input.GetButtonDown("Jump"))
         {
             Jumping jumpScript = gameObject.GetComponent<Jumping>();
@@ -39,6 +43,16 @@ public class Player : MonoBehaviour
     {
         float movementInput = Input.GetAxis("Horizontal");
 
+        RotateTowardsMouseCursor();
+
+        if (movementInput != 0)
+        { 
+            rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
+        }
+    }
+
+    private void RotateTowardsMouseCursor()
+    {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (mousePosition.x > transform.position.x && isFacingLeft)
         {
@@ -49,11 +63,6 @@ public class Player : MonoBehaviour
         {
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
             isFacingLeft = true;
-        }
-
-        if (movementInput != 0)
-        { 
-            rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
         }
     }
 
@@ -82,6 +91,7 @@ public class Player : MonoBehaviour
 
         GetComponent<Jumping>().jumpCooldown = 0.0f;
 
+        RotateTowardsMouseCursor();
     }
 
     private void TryHijack()
