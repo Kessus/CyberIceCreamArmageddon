@@ -36,8 +36,11 @@ public class Damage : MonoBehaviour
     {
         bodyHealth = maxBodyHealth;
         goggleHealth = maxGoggleHealth;
-        healthBarScript.SetMaxHealth(maxBodyHealth);
-        healthBarScript.SetHealth(bodyHealth);
+        if (healthBarScript != null)
+        {
+            healthBarScript.SetMaxHealth(maxBodyHealth);
+            healthBarScript.SetHealth(bodyHealth);
+        }
 
         if(goggleHealthBarScript != null)
         {
@@ -54,7 +57,8 @@ public class Damage : MonoBehaviour
             damage *= 5;
 
             bodyHealth -= damage;
-            healthBarScript.SetHealth(Mathf.Clamp(bodyHealth, 0, maxBodyHealth));
+            if(healthBarScript != null)
+                healthBarScript.SetHealth(Mathf.Clamp(bodyHealth, 0, maxBodyHealth));
 
             if (bodyHealth <= 0)
             {

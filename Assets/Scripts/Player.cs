@@ -37,17 +37,21 @@ public class Player : MonoBehaviour
             
         if (Input.GetButtonDown("Hijack"))
             TryHijack();
+
+        RotateTowardsMouseCursor();
     }
 
     private void FixedUpdate()
     {
         float movementInput = Input.GetAxis("Horizontal");
 
-        RotateTowardsMouseCursor();
-
         if (movementInput != 0)
         { 
             rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
+        }
+        else
+        {
+            rigidBody.velocity = new Vector2(0.0f, rigidBody.velocity.y);
         }
     }
 
