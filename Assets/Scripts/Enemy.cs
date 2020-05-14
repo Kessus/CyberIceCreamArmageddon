@@ -39,9 +39,9 @@ public class Enemy : MonoBehaviour
     {
         if (seeker.IsDone())
         {
-            if (Camera.main.GetComponent<CameraFollow>().player != null)
+            if (Player.playerObject != null)
             {
-                seeker.StartPath(rb.position, Camera.main.GetComponent<CameraFollow>().player.position, OnPathComplete);
+                seeker.StartPath(rb.position, Player.playerObject.transform.position, OnPathComplete);
             }
         }
             
@@ -80,9 +80,9 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Camera.main.GetComponent<CameraFollow>().player == null)
+        if (Player.playerObject == null)
             return;
-        Vector3 playerPosition = Camera.main.GetComponent<CameraFollow>().player.position;
+        Vector3 playerPosition = Player.playerObject.transform.position;
         if (playerPosition.x > transform.position.x && isFacingLeft)
         {
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);

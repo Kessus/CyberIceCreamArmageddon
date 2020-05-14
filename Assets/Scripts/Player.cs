@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     public float movementSpeed = 8.0f;
 
+    public static GameObject playerObject;
+
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
     private bool isFacingLeft = false;
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerObject = gameObject;
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
         playerCollision = gameObject.GetComponent<BoxCollider2D>();
         isFacingLeft = transform.rotation.y != 0.0f;
@@ -89,7 +92,7 @@ public class Player : MonoBehaviour
         if (EnemyScript != null)
             EnemyScript.enabled = false;
 
-        Camera.main.GetComponent<CameraFollow>().player = transform;
+        playerObject = gameObject;
 
         GetComponent<Damage>().IsPlayer = true;
 

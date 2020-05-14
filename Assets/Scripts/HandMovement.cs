@@ -13,7 +13,7 @@ public class HandMovement : MonoBehaviour
             return;
 
         Vector3 targetPosition;
-        Transform playerTransform = Camera.main.GetComponent<CameraFollow>().player;
+        Transform playerTransform = Player.playerObject.transform;
 
         if (playerTransform == null)
             return;

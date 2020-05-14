@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager
 {
     private static BinaryFormatter formatter = new BinaryFormatter();
     private static string filePath = Application.persistentDataPath + "/save.cream";
@@ -13,7 +13,6 @@ public class SaveManager : MonoBehaviour
     //Saves the scene name to a binary file. The name should belong to the most recently opened level.
     public static void SaveGame(string sceneName)
     {
-        Debug.Log(filePath);
         SaveGameData save = new SaveGameData(sceneName);
         FileStream stream = new FileStream(filePath, FileMode.Create);
         
