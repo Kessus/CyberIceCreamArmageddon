@@ -8,39 +8,70 @@ public class Projectile : MonoBehaviour
     public float speed = 20f;
     public Rigidbody2D rb;
     public int damageAmount = 100;
-    [SerializeField] private LayerMask ignoredLayers = new LayerMask();
+    [SerializeField] 
+    private LayerMask ignoredLayers = new LayerMask();
     public float timeToLive = 4.0f;
     public float speedVariation = 0.0f;
 
+    private bool collisionLayersInitialized = false;
     private bool hasDealtDamage = false;
+    private float remainingLifeTime;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb.velocity = transform.right * (speed + Random.Range(-speedVariation, speedVariation));
-        StartCoroutine(DespawnTimer());
+        remainingLifeTime = timeToLive;
     }
 
-    public static GameObject CreateProjectile(GameObject projectile, GameObject weapon)
+    private void Update()
+    {
+        remainingLifeTime -= Time.deltaTime;
+        if (remainingLifeTime <= 0)
+            Destroy(gameObject);
+    }
+
+    public static GameObject CreateProjectile(GameObject projectile, GameObject weapon, Transform originPoint)
     {
         WeaponBehaviour behaviour = weapon.GetComponent<WeaponBehaviour>();
 
-        GameObject createdProjectile = Instantiate(projectile, behaviour.firePoint.transform.position, behaviour.firePoint.transform.rotation);
+        GameObject createdProjectile = Instantiate(projectile, originPoint.position, originPoint.rotation);
+        ChangeProjectileCollisionLayers(createdProjectile, weapon);
 
-        if(weapon.layer == LayerMask.NameToLayer("Player"))
+        return createdProjectile;
+    }
+
+    private static void ChangeProjectileCollisionLayers(GameObject createdProjectile, GameObject instigator)
+    {
+        Projectile projectileScript = createdProjectile.GetComponent<Projectile>();
+        if (instigator.layer == LayerMask.NameToLayer("Player"))
         {
+            if (projectileScript.collisionLayersInitialized)
+            {
+                projectileScript.ignoredLayers -= LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
+            }
             createdProjectile.gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
-            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("PlayerProjectile"));
-            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("Player"));
+            projectileScript.ignoredLayers += LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
         }
         else
         {
+            if (projectileScript.collisionLayersInitialized)
+            {
+                projectileScript.ignoredLayers -= LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
+            }
             createdProjectile.gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
-            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("Enemy"));
-            createdProjectile.GetComponent<Projectile>().ignoredLayers |= (1 << LayerMask.NameToLayer("EnemyProjectile"));
+            projectileScript.ignoredLayers += LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
         }
+        projectileScript.collisionLayersInitialized = true;
+    }
 
-        return createdProjectile;
+    public void DeflectProjectile(GameObject instigator)
+    {
+        ChangeProjectileCollisionLayers(gameObject, instigator);
+        gameObject.transform.Rotate(new Vector3(0.0f, 180.0f, 0.0f), Space.Self);
+        rb.velocity = transform.right * (speed + Random.Range(-speedVariation, speedVariation));
+        remainingLifeTime = timeToLive;
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
@@ -55,11 +86,5 @@ public class Projectile : MonoBehaviour
             hasDealtDamage = true;
             Destroy(gameObject);
         }
-    }
-
-    private IEnumerator DespawnTimer()
-    {
-        yield return new WaitForSeconds(timeToLive);
-        Destroy(gameObject);
     }
 }

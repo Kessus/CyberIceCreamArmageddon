@@ -16,29 +16,31 @@ public class Weapon : MonoBehaviour
     private bool isOnCooldown = false;
     private int visibilityChangeCounter = 0;
     private SpriteRenderer sprite;
-    private bool pulledTrigger = false;
+    private bool usedWeapon = false;
+    private Animator animator;
 
-    void Start()
+    private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         if (InGameUi.IsGamePaused)
             return;
 
-        if (!pulledTrigger || isAutomatic)
+        if (!usedWeapon || isAutomatic)
         {
             if (Input.GetButton(triggerKey) && !isOnCooldown && reactToButtons)
             {
-                pulledTrigger = true;
+                usedWeapon = true;
                 UseWeapon();
             }
         }
         else
         {
-            pulledTrigger = Input.GetButton(triggerKey) || isOnCooldown;
+            usedWeapon = Input.GetButton(triggerKey) || isOnCooldown;
         }
     }
 
@@ -47,16 +49,17 @@ public class Weapon : MonoBehaviour
         weaponBehaviour.Execute();
         StartCoroutine(HandleCooldown());
         StartCoroutine(HandleVisibility());
+        HandleAnimations();
     }
 
-    IEnumerator HandleCooldown()
+    private IEnumerator HandleCooldown()
     {
         isOnCooldown = true;
         yield return new WaitForSeconds(cooldownDuration);
         isOnCooldown = false;
     }
 
-    IEnumerator HandleVisibility()
+    private IEnumerator HandleVisibility()
     {
         sprite.enabled = true;
         visibilityChangeCounter++;
@@ -64,5 +67,13 @@ public class Weapon : MonoBehaviour
         visibilityChangeCounter--;
         if(visibilityChangeCounter == 0)
             sprite.enabled = false;
+    }
+
+    private void HandleAnimations()
+    {
+        if (animator == null)
+            return;
+
+        animator.SetTrigger("WeaponUsed");
     }
 }

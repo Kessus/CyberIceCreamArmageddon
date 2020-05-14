@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpreadShot : WeaponBehaviour
 {
+    public GameObject projectileType;
+    public Transform originPoint;
     public int projectileCount = 1;
     public float maxSpreadAngle = 0.0f;
     public float knockbackDistance = 0.0f;
@@ -12,9 +14,9 @@ public class SpreadShot : WeaponBehaviour
     {
         for(int i = 0; i < projectileCount; i++)
         {
-            GameObject projectile = Projectile.CreateProjectile(projectileType, gameObject);
+            GameObject projectile = Projectile.CreateProjectile(projectileType, gameObject, originPoint);
             projectile.transform.Rotate(new Vector3(0.0f, 0.0f, Random.Range(-maxSpreadAngle, maxSpreadAngle)));
         }
-        GetComponentInParent<Rigidbody2D>().AddForce(-(firePoint.transform.right * knockbackDistance));
+        GetComponentInParent<Rigidbody2D>().AddForce(-(originPoint.right * knockbackDistance));
     }
 }

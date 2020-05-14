@@ -27,9 +27,8 @@ public class GravityTrap : MonoBehaviour
     private IEnumerator ActivateTrap()
     {
         isActive = true;
-        List<RaycastHit2D> collidersInRange = new List<RaycastHit2D>(Physics2D.BoxCastAll(transform.position + new Vector3(effectOffset.x, effectOffset.y), effectSize, 0.0f, new Vector2(), 0.0f, affectedLayers));
-        /*caughtObjects.AddRange(collidersInRange.Select(c => c.collider.gameObject).ToList());
-        objectPositionCache.AddRange((caughtObjects.Select(o => o.transform.position).ToList()));*/
+        List<RaycastHit2D> collidersInRange = new List<RaycastHit2D>(Physics2D.BoxCastAll(transform.position + (Vector3)effectOffset, effectSize, 0.0f, new Vector2(), 0.0f, affectedLayers));
+
         foreach(RaycastHit2D collision in collidersInRange)
         {
             Rigidbody2D rigidBody = collision.collider.gameObject.GetComponent<Rigidbody2D>();
@@ -57,6 +56,6 @@ public class GravityTrap : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = isActive? Color.red : Color.white;
-        Gizmos.DrawWireCube(transform.position + new Vector3(effectOffset.x, effectOffset.y), new Vector3(effectSize.x, effectSize.y));
+        Gizmos.DrawWireCube(transform.position + transform.right * effectOffset.x + transform.up * effectOffset.y, (Vector3)effectSize);
     }
 }
