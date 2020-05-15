@@ -135,10 +135,15 @@ PrefabInstance:
       propertyPath: jumpCount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1633458973328306025, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: groundCheckLayers.m_Bits
+      value: 35072
+      objectReference: {fileID: 0}
     - target: {fileID: 3472344513789823372, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: player
       objectReference: {fileID: 0}
     - target: {fileID: 3472344513789823372, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}

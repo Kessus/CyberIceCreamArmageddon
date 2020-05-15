@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7724370155667093960}
   - component: {fileID: 3713529977830764825}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Columns_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1896628438241963340}
   - component: {fileID: 1896628438241963342}
   - component: {fileID: 1896628438241963377}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3767356257878927812}
   - component: {fileID: 3834859404445864726}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Columns_11 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107629077890342022}
   - component: {fileID: 9157459696260491204}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Columns_11 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1778885867955588948}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -417,7 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1905805494181333477}
   - component: {fileID: 2887509536561292394}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Columns_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1373382138621767829}
   - component: {fileID: 1784750897558135171}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Columns_20
   m_TagString: Untagged
   m_Icon: {fileID: 0}

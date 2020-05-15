@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 566011309900258140}
   - component: {fileID: 3556504655899970000}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Blocks_10 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8832856453350109704}
   - component: {fileID: 2627025494354542987}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Blocks_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 7712089449885114797}
   - component: {fileID: 7712089449885114799}
   - component: {fileID: 7712089449885114768}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: platformStatic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 118974466766663510}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4024065952076308805}
   - component: {fileID: 2287123595997584068}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Blocks_10 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

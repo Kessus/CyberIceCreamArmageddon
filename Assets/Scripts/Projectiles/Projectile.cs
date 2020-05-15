@@ -8,14 +8,14 @@ public class Projectile : MonoBehaviour
     public float speed = 20f;
     public Rigidbody2D rb;
     public int damageAmount = 100;
-    [SerializeField] 
-    private LayerMask ignoredLayers = new LayerMask();
     public float timeToLive = 4.0f;
     public float speedVariation = 0.0f;
 
-    private bool collisionLayersInitialized = false;
-    private bool hasDealtDamage = false;
-    private float remainingLifeTime;
+    [SerializeField]
+    protected LayerMask ignoredLayers = new LayerMask();
+    protected bool collisionLayersInitialized = false;
+    protected bool hasDealtDamage = false;
+    protected float remainingLifeTime;
 
 
     // Start is called before the first frame update
@@ -49,19 +49,19 @@ public class Projectile : MonoBehaviour
         {
             if (projectileScript.collisionLayersInitialized)
             {
-                projectileScript.ignoredLayers -= LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
+                projectileScript.ignoredLayers &= LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
             }
             createdProjectile.gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
-            projectileScript.ignoredLayers += LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
+            projectileScript.ignoredLayers |= LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
         }
         else
         {
             if (projectileScript.collisionLayersInitialized)
             {
-                projectileScript.ignoredLayers -= LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
+                projectileScript.ignoredLayers &= LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
             }
             createdProjectile.gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
-            projectileScript.ignoredLayers += LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
+            projectileScript.ignoredLayers |= LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
         }
         projectileScript.collisionLayersInitialized = true;
     }
@@ -76,9 +76,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
+        OnHit(hitInfo);
+    }
+
+    protected virtual void OnHit(Collider2D hitInfo)
+    {
+        if ((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
         {
-            Damage damageScript  = hitInfo.GetComponent<Damage>();
+            Damage damageScript = hitInfo.GetComponent<Damage>();
             if (damageScript != null)
             {
                 damageScript.TakeDamage(damageAmount);

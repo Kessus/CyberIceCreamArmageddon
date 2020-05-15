@@ -13,11 +13,11 @@ public class HandMovement : MonoBehaviour
             return;
 
         Vector3 targetPosition;
-        Transform playerTransform = Player.playerObject.transform;
-
-        if (playerTransform == null)
+        if (Player.playerObject == null)
             return;
 
+        Transform playerTransform = Player.playerObject.transform;
+        
         if (aimTowardsPlayer)
             targetPosition = playerTransform.position;
         else
