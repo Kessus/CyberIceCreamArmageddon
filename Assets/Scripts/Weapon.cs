@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public bool isAutomatic = false;
     public float cooldownDuration = 0.25f;
     public float visibilityTime = 0.3f;
+    public Sprite weaponIcon;
 
     [HideInInspector]
     public bool reactToButtons = false;
@@ -55,7 +56,9 @@ public class Weapon : MonoBehaviour
     private IEnumerator HandleCooldown()
     {
         isOnCooldown = true;
+        WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, true);
         yield return new WaitForSeconds(cooldownDuration);
+        WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, false);
         isOnCooldown = false;
     }
 

@@ -101,6 +101,7 @@ MonoBehaviour:
   isAutomatic: 0
   cooldownDuration: 0.25
   visibilityTime: 0.3
+  weaponIcon: {fileID: 0}
   reactToButtons: 0
 --- !u!114 &4585778966743968746
 MonoBehaviour:
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileType: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
     type: 3}
-  firePoint: {fileID: 6764466180484345296}
+  originPoint: {fileID: 6764466180484345303}
 --- !u!1 &6764466180484345296
 GameObject:
   m_ObjectHideFlags: 0

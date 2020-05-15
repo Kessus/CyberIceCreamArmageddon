@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2686371539874362164}
   - component: {fileID: 5261829716565906131}
   m_Layer: 10
-  m_Name: SnipperRifle
+  m_Name: SniperRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   isAutomatic: 0
   cooldownDuration: 1.5
   visibilityTime: 0.5
+  weaponIcon: {fileID: 21300012, guid: 0e199325ccd4242429396b9293d2404d, type: 3}
   reactToButtons: 0
 --- !u!114 &5261829716565906131
 MonoBehaviour:

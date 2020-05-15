@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
         foreach(Weapon weapon in ownedWeapons)
         {
             weapon.reactToButtons = true;
+            WeaponCooldownIndicator.weaponCooldowns.RegisterWeaponChange(weapon);
         }
 
         Enemy EnemyScript = gameObject.GetComponent<Enemy>();
