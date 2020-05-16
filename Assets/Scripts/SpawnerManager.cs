@@ -49,9 +49,9 @@ public class SpawnerManager : MonoBehaviour
 
     private IEnumerator TriggerSpawners()
     {
-        List<Spawner> availableSpawners = spawners.Where(spawner => spawner.IsReady).ToList();
-        
-        for (int i = 0; i < desiredEnemyCount - activeEnemies; i++)
+        List<Spawner> availableSpawners = spawners.Where(spawner => spawner.IsReady && spawner.associatedStage == SceneGoalManager.goalManager.CurrentStageIndex).ToList();
+        int enemyCount = activeEnemies;
+        for (int i = 0; i < Mathf.Min(desiredEnemyCount, SceneGoalManager.goalManager.RemainingEnemies - enemyCount); i++)
         {
             if (availableSpawners.Count > 0)
             {

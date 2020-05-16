@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public List<GameObject> spawnedEnemyPrefabs;
+    public int associatedStage = 0;
     public bool IsReady { get; private set; } = true;
 
     public void Spawn()

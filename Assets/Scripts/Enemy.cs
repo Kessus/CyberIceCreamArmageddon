@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
         Destroy(healthBar);
 
         SpawnerManager.mainManager.RegisterEnemyDeath();
+        SceneGoalManager.goalManager.RegisterEnemyDeath();
     }
 
     void OnPathComplete(Path p)
