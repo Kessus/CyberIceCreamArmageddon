@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float movementSpeed = 8.0f;
 
     public static GameObject playerObject;
+    public bool isDead = false;
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
@@ -40,6 +41,9 @@ public class Player : MonoBehaviour
             
         if (Input.GetButtonDown("Hijack"))
             TryHijack();
+
+        if (Input.GetKeyDown(KeyCode.T))
+            GetComponent<Damage>().Die();
 
         RotateTowardsMouseCursor();
     }
@@ -104,8 +108,7 @@ public class Player : MonoBehaviour
 
     private void TryHijack()
     {
-        float castDistance = 2.0f;
-        RaycastHit2D hitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, Vector2.right, castDistance, LayerMask.GetMask("Enemy"));
+        RaycastHit2D hitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, new Vector2(), 0.0f, LayerMask.GetMask("Enemy"));
         if (hitResult.collider == null)
             return;
         GameObject hijackTarget = hitResult.collider.gameObject;

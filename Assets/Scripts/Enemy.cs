@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float speed = 1f;
     public float nextWaypointDistance = 3f;
     public float playerShootDistance = 8.0f;
+    public float runAwayDistance = 0.0f;
     public GameObject healthBar = null;
     public bool CanBeHijacked { get
         {
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
             return (float)(damageScript.bodyHealth) / damageScript.maxBodyHealth <= 0.5f;
         }
     }
+    public bool shouldRunAway = false;
     
     private Path path;
     private int currentWaypoint = 0;
@@ -49,7 +51,10 @@ public class Enemy : MonoBehaviour
 
     private void ShootAtPlayer()
     {
-        if(canShoot)
+        if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead)
+            return;
+
+        if (canShoot)
             GetComponentInChildren<Weapon>().UseWeapon();
     }
 
@@ -81,8 +86,9 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Player.playerObject == null)
+        if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead)
             return;
+
         Vector3 playerPosition = Player.playerObject.transform.position;
         if (playerPosition.x > transform.position.x && isFacingLeft)
         {
@@ -95,9 +101,9 @@ public class Enemy : MonoBehaviour
             isFacingLeft = true;
         }
 
-        RaycastHit2D enemyLineOfSight =  Physics2D.Linecast(transform.position, playerPosition, 1 << LayerMask.NameToLayer("Ground"));
+        RaycastHit2D enemyLineOfSight =  Physics2D.Linecast(transform.position, playerPosition, 1 << LayerMask.GetMask(new string[] { "Ground", "Wall" }));
 
-        if ((playerPosition - transform.position).magnitude > playerShootDistance || enemyLineOfSight.collider != null)
+        if ((playerPosition - transform.position).magnitude >= playerShootDistance || (shouldRunAway && (playerPosition - transform.position).magnitude <= runAwayDistance))
         {
             if (path == null)
                 return;
@@ -107,9 +113,16 @@ public class Enemy : MonoBehaviour
             }
 
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            if (shouldRunAway && (playerPosition - transform.position).magnitude <= runAwayDistance)
+            {
+                direction *= -1;
+                Debug.Log(direction);
+            }
+
             Vector2 force = new Vector2(direction.x * speed, rb.velocity.y);
 
             rb.velocity = force;
+            
             if (direction.y != 1.0f)
             {
                 Jumping jumpScript = gameObject.GetComponent<Jumping>();
@@ -130,15 +143,24 @@ public class Enemy : MonoBehaviour
                 currentWaypoint++;
             }
 
-            canShoot = false;
-        }
-        else
-        {
-            canShoot = true;
-            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+            if(enemyLineOfSight.collider != null)
+            {
+                canShoot = false;
+            }
+            else
+            {
+                canShoot = true;
+            }
+            
         }
         
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, playerShootDistance);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, runAwayDistance);
+    }
 }

@@ -56,9 +56,11 @@ public class Weapon : MonoBehaviour
     private IEnumerator HandleCooldown()
     {
         isOnCooldown = true;
-        WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, true);
+        if(gameObject.layer == LayerMask.NameToLayer("Player"))
+            WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, true);
         yield return new WaitForSeconds(cooldownDuration);
-        WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, false);
+        if (gameObject.layer == LayerMask.NameToLayer("Player"))
+            WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, false);
         isOnCooldown = false;
     }
 

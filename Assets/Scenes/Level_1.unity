@@ -5752,6 +5752,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1872386489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1980674358 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7120039033802330201, guid: ed874c528540ef749932260063c0fda7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1840336807297049181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1999197931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3751761617151846426, guid: ed874c528540ef749932260063c0fda7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1840336807297049181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2021554419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5925,6 +5943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageEnemyCountGoals: 0600000005000000
+  enemiesLeftText: {fileID: 1999197931}
 --- !u!1001 &2048853153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7106,6 +7125,11 @@ PrefabInstance:
       propertyPath: bodyFatigueDamagePercent
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1145564325203579033, guid: 889c37deb1b38a345b5a88897f45e328,
+        type: 3}
+      propertyPath: deathScreen
+      value: 
+      objectReference: {fileID: 1980674358}
     - target: {fileID: 4019349907997413574, guid: 889c37deb1b38a345b5a88897f45e328,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7171,12 +7195,12 @@ PrefabInstance:
     - target: {fileID: 5473667362616088507, guid: 889c37deb1b38a345b5a88897f45e328,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.66
+      value: -13.02
       objectReference: {fileID: 0}
     - target: {fileID: 5473667362616088507, guid: 889c37deb1b38a345b5a88897f45e328,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.1
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 5473667362616088507, guid: 889c37deb1b38a345b5a88897f45e328,
         type: 3}

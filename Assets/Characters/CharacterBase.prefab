@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3531af9bab3d6f43aef68f12717a8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpPower: 12
+  jumpPower: 15
   jumpCount: 2
   jumpCooldown: 0
   groundCheckLayers:
@@ -208,7 +208,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62681ef606c1bf4191ab017fb5d048f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  maxBodyHealth: 100
+  maxGoggleHealth: 500
+  bodyFatigueDamagePercent: 0.1
+  goggleFatigueDamagePercent: 0.15
+  fatigueDelay: 6
+  fatigueFrequency: 1
+  healthBarScript: {fileID: 0}
+  goggleHealthBarScript: {fileID: 0}
+  bodyHealth: 100
+  goggleHealth: 100
 --- !u!1 &4626609093687714543
 GameObject:
   m_ObjectHideFlags: 0

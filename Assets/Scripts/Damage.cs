@@ -49,6 +49,8 @@ public class Damage : MonoBehaviour
         }
     }
 
+
+
     public void TakeDamage(int damage)
     {
         if (!isPlayer)
@@ -100,14 +102,15 @@ public class Damage : MonoBehaviour
             TakeDamage(Mathf.RoundToInt(goggleFatigueDamagePercent * maxGoggleHealth));
     }
 
-    void Die()
+    public void Die()
     {
         if (!isPlayer)
             Destroy(gameObject);
         else
         {
+            Player.playerObject.GetComponent<Player>().isDead = true;
+            DeathScreen.deathScreen.gameObject.SetActive(true);
             Destroy(gameObject);
-            Debug.Log("Player died!");
         }
     }
 }

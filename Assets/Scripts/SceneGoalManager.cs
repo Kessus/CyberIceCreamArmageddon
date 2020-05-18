@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneGoalManager : MonoBehaviour
 {
@@ -8,11 +9,11 @@ public class SceneGoalManager : MonoBehaviour
     public List<int> stageEnemyCountGoals;
     public delegate void StageAdvanceDelegate(int newStageIndex);
     public event StageAdvanceDelegate OnStageAdvance;
+    public Text enemiesLeftText;
     public int CurrentStageIndex { get; private set; } = -1;
     public int RemainingEnemies { get; private set; } = 0;
 
-    private CameraFollow cameraScript;
-    
+    private CameraFollow cameraScript;    
     
     public SceneGoalManager()
     {
@@ -21,14 +22,17 @@ public class SceneGoalManager : MonoBehaviour
     void Start()
     {
         cameraScript = Camera.main.GetComponent<CameraFollow>();
-        AdvanceToNextStage();
+        CurrentStageIndex = 0;
+        OnStageAdvance?.Invoke(CurrentStageIndex);
         BeginNewStage();
     }
 
     public void RegisterEnemyDeath()
     {
         RemainingEnemies--;
-        if(RemainingEnemies <= 0)
+        if(enemiesLeftText != null)
+            enemiesLeftText.text = "Enemies left: " + RemainingEnemies;
+        if (RemainingEnemies <= 0)
         {
             AdvanceToNextStage();
         }
@@ -38,7 +42,6 @@ public class SceneGoalManager : MonoBehaviour
     private void AdvanceToNextStage()
     {
         CurrentStageIndex++;
-        Debug.Log("Advanced stage! New stage: " + CurrentStageIndex);
         OnStageAdvance?.Invoke(CurrentStageIndex);
     }
 
@@ -46,5 +49,6 @@ public class SceneGoalManager : MonoBehaviour
     public void BeginNewStage()
     {
         RemainingEnemies = stageEnemyCountGoals[CurrentStageIndex];
+        enemiesLeftText.text = "Enemies left: " + RemainingEnemies;
     }
 }
