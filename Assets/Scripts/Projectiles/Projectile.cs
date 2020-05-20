@@ -84,10 +84,12 @@ public class Projectile : MonoBehaviour
         if ((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
         {
             Damage damageScript = hitInfo.GetComponent<Damage>();
+            BossDamage bossDamageScript = hitInfo.GetComponent<BossDamage>();
             if (damageScript != null)
-            {
-                damageScript.TakeDamage(damageAmount);
-            }
+                damageScript.ReceiveDamage(damageAmount);
+            else if (bossDamageScript != null)
+                bossDamageScript.ReceiveDamage(damageAmount);
+
             hasDealtDamage = true;
             Destroy(gameObject);
         }

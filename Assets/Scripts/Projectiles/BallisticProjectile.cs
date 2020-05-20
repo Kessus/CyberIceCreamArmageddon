@@ -17,7 +17,7 @@ public class BallisticProjectile : Projectile
                 Damage damageScript = target.collider.gameObject.GetComponent<Damage>();
                 if (damageScript != null && CanDamageTarget(target))
                 {
-                    damageScript.TakeDamage(damageAmount);
+                    damageScript.ReceiveDamage(damageAmount);
                 }
             }
             hasDealtDamage = true;

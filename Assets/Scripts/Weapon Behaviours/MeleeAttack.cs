@@ -35,7 +35,7 @@ public class MeleeAttack : WeaponBehaviour
             Projectile projectileScript = hit.collider.gameObject.GetComponent<Projectile>();
             if (damageScript != null)
             {
-                damageScript.TakeDamage(damageAmount);
+                damageScript.ReceiveDamage(damageAmount);
                 continue;
             }
             if (projectileScript != null)

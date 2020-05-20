@@ -11,6 +11,6 @@ public class Spikes : MonoBehaviour
         if (damageScript == null)
             return;
 
-        damageScript.TakeDamage(damageAmount);
+        damageScript.ReceiveDamage(damageAmount);
     }
 }

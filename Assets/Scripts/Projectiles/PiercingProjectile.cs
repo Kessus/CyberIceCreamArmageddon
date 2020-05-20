@@ -13,7 +13,7 @@ public class PiercingProjectile : Projectile
             Damage damageScript = hitInfo.gameObject.GetComponent<Damage>();
             if (damageScript != null)
             {
-                    damageScript.TakeDamage(damageAmount);
+                    damageScript.ReceiveDamage(damageAmount);
             }
             pierceCount--;
             if(pierceCount <= 0)

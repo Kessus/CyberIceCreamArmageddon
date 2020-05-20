@@ -17,7 +17,7 @@ public class ExplosiveBarrel : MonoBehaviour
             if (damageScript == null)
                 continue;
 
-            damageScript.TakeDamage(blastDamage);
+            damageScript.ReceiveDamage(blastDamage);
         }
     }
 

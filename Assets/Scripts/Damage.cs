@@ -51,7 +51,7 @@ public class Damage : MonoBehaviour
 
 
 
-    public void TakeDamage(int damage)
+    public void ReceiveDamage(int damage)
     {
         if (!isPlayer)
         {
@@ -97,9 +97,9 @@ public class Damage : MonoBehaviour
     private void DealFatigueDamage()
     {
         if(bodyHealth > 0)
-            TakeDamage(Mathf.RoundToInt(bodyFatigueDamagePercent * maxBodyHealth));
+            ReceiveDamage(Mathf.RoundToInt(bodyFatigueDamagePercent * maxBodyHealth));
         else
-            TakeDamage(Mathf.RoundToInt(goggleFatigueDamagePercent * maxGoggleHealth));
+            ReceiveDamage(Mathf.RoundToInt(goggleFatigueDamagePercent * maxGoggleHealth));
     }
 
     public void Die()
