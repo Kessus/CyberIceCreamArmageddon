@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f8d7da77834344ea7a47585e220f9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 16
   rb: {fileID: 2185357643130852954}
-  damageAmount: 100
+  damageAmount: 25
   timeToLive: 4
   speedVariation: 0
   ignoredLayers:
     serializedVersion: 2
-    m_Bits: 12544
+    m_Bits: 78080
   explosionRadius: 2
 --- !u!1001 &2284858775947820328
 PrefabInstance:
@@ -43,21 +43,37 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: -3236461819172296019, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.007228589
+      objectReference: {fileID: 0}
+    - target: {fileID: -3236461819172296019, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.134262
+      objectReference: {fileID: 0}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.18867922
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.008009964
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.008009964
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3710fce004c67a54991efcab57c8dddc,
+        type: 3}
     - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_LocalPosition.x

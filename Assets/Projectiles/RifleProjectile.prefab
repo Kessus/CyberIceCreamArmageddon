@@ -10,17 +10,17 @@ PrefabInstance:
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.378471
+      value: 0.31818175
       objectReference: {fileID: 0}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.g
-      value: 0.56752986
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.990566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
@@ -77,16 +77,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.35
-      objectReference: {fileID: 0}
     - target: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Name
@@ -100,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 7447601843724529967, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: damageAmount
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7447601843724529967, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}

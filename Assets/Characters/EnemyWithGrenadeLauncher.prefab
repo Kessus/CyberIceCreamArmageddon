@@ -82,6 +82,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0.15966536
       objectReference: {fileID: 0}
+    - target: {fileID: 5777194299449361716, guid: da2850e0318604745840a3ea87c88c8f,
+        type: 3}
+      propertyPath: maxBodyHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6001154549622932373, guid: da2850e0318604745840a3ea87c88c8f,
         type: 3}
       propertyPath: m_AnchorMax.x

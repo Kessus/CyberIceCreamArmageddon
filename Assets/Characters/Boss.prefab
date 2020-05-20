@@ -181,5 +181,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDefending: 0
-  maxHealth: 2000
-  shieldStrength: 300
+  maxHealth: 4000
+  shieldStrength: 600
