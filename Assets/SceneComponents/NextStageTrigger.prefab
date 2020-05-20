@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 53361671208157852}
   - component: {fileID: 6906472728986943385}
   - component: {fileID: 3657112716401796933}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: NextStageTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,3 +70,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8cb597e28a5654baa148082e21d2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlledBlockage: {fileID: 0}

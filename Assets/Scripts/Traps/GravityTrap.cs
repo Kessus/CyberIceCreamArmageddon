@@ -53,7 +53,7 @@ public class GravityTrap : MonoBehaviour
         isActive = false;
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = isActive? Color.red : Color.white;
         Gizmos.DrawWireCube(transform.position + transform.right * effectOffset.x + transform.up * effectOffset.y, (Vector3)effectSize);

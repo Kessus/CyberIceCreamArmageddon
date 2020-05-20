@@ -136,8 +136,8 @@ MonoBehaviour:
   speed: 12
   rb: {fileID: -9086432528491713678}
   damageAmount: 4
-  ignoredLayers:
-    serializedVersion: 2
-    m_Bits: 256
   timeToLive: 3
   speedVariation: 2
+  ignoredLayers:
+    serializedVersion: 2
+    m_Bits: 65792

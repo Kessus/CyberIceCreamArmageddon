@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using System.Linq;
 
 public class Enemy : MonoBehaviour
 {
-
     public float speed = 1f;
-    public float nextWaypointDistance = 3f;
     public float playerShootDistance = 8.0f;
     public float runAwayDistance = 0.0f;
     public GameObject healthBar = null;
@@ -21,6 +20,7 @@ public class Enemy : MonoBehaviour
     
     private Path path;
     private int currentWaypoint = 0;
+    private float nextWaypointDistance = 3f;
     private Seeker seeker;
     private Rigidbody2D rb;
     private bool isFacingLeft = false;
@@ -55,7 +55,13 @@ public class Enemy : MonoBehaviour
             return;
 
         if (canShoot)
-            GetComponentInChildren<Weapon>().UseWeapon();
+        {
+            List<Weapon> availableWeapons = new List<Weapon>(GetComponentsInChildren<Weapon>());
+            if (availableWeapons.Any(w => w.IsOnCooldown))
+                return;
+            Weapon chosenWeapon = availableWeapons[Random.Range(0, availableWeapons.Count)];
+            chosenWeapon.UseWeapon();
+        }
     }
 
     private void OnDisable()

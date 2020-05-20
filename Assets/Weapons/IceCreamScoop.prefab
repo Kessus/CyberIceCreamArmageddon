@@ -50,6 +50,7 @@ MonoBehaviour:
   isAutomatic: 0
   cooldownDuration: 0.25
   visibilityTime: 0.3
+  weaponIcon: {fileID: 21300000, guid: 8eb88781fee1a3640af93959a4686653, type: 3}
   reactToButtons: 0
 --- !u!114 &6334416251805095170
 MonoBehaviour:
@@ -104,7 +105,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: d80024f2749990241a249510a98d17d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -42,7 +42,10 @@ public class SceneGoalManager : MonoBehaviour
     private void AdvanceToNextStage()
     {
         CurrentStageIndex++;
-        OnStageAdvance?.Invoke(CurrentStageIndex);
+        if(stageEnemyCountGoals.Count > CurrentStageIndex)
+            OnStageAdvance?.Invoke(CurrentStageIndex);
+        //else
+            //Display level finish screen
     }
 
     //Start spawning new enemies

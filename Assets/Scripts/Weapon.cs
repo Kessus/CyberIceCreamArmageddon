@@ -10,19 +10,19 @@ public class Weapon : MonoBehaviour
     public float cooldownDuration = 0.25f;
     public float visibilityTime = 0.3f;
     public Sprite weaponIcon;
-
+    public bool IsOnCooldown { get; private set; } = false;
     [HideInInspector]
     public bool reactToButtons = false;
 
-    private bool isOnCooldown = false;
+    
     private int visibilityChangeCounter = 0;
-    private SpriteRenderer sprite;
+    private List<SpriteRenderer> sprites;
     private bool usedWeapon = false;
     private Animator animator;
 
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        sprites = new List<SpriteRenderer>(transform.parent.gameObject.GetComponentsInChildren<SpriteRenderer>());
         animator = GetComponent<Animator>();
     }
 
@@ -33,7 +33,7 @@ public class Weapon : MonoBehaviour
 
         if (!usedWeapon || isAutomatic)
         {
-            if (Input.GetButton(triggerKey) && !isOnCooldown && reactToButtons)
+            if (Input.GetButton(triggerKey) && !IsOnCooldown && reactToButtons)
             {
                 usedWeapon = true;
                 UseWeapon();
@@ -41,7 +41,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            usedWeapon = Input.GetButton(triggerKey) || isOnCooldown;
+            usedWeapon = Input.GetButton(triggerKey) || IsOnCooldown;
         }
     }
 
@@ -55,23 +55,25 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator HandleCooldown()
     {
-        isOnCooldown = true;
+        IsOnCooldown = true;
         if(gameObject.layer == LayerMask.NameToLayer("Player"))
             WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, true);
         yield return new WaitForSeconds(cooldownDuration);
         if (gameObject.layer == LayerMask.NameToLayer("Player"))
             WeaponCooldownIndicator.weaponCooldowns.ChangeWeaponCooldown(this, false);
-        isOnCooldown = false;
+        IsOnCooldown = false;
     }
 
     private IEnumerator HandleVisibility()
     {
-        sprite.enabled = true;
+        foreach (SpriteRenderer sprite in sprites)
+            sprite.enabled = true;
         visibilityChangeCounter++;
         yield return new WaitForSeconds(visibilityTime);
         visibilityChangeCounter--;
         if(visibilityChangeCounter == 0)
-            sprite.enabled = false;
+            foreach (SpriteRenderer sprite in sprites)
+                sprite.enabled = false;
     }
 
     private void HandleAnimations()

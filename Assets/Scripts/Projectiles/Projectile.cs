@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour
         {
             if (projectileScript.collisionLayersInitialized)
             {
-                projectileScript.ignoredLayers &= LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
+                projectileScript.ignoredLayers &= ~LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });
             }
             createdProjectile.gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
             projectileScript.ignoredLayers |= LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
@@ -58,7 +58,7 @@ public class Projectile : MonoBehaviour
         {
             if (projectileScript.collisionLayersInitialized)
             {
-                projectileScript.ignoredLayers &= LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
+                projectileScript.ignoredLayers &= ~LayerMask.GetMask(new string[] { "PlayerProjectile", "Player" });
             }
             createdProjectile.gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
             projectileScript.ignoredLayers |= LayerMask.GetMask(new string[] { "EnemyProjectile", "Enemy" });

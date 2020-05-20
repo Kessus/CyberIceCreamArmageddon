@@ -21,7 +21,7 @@ public class ExplosiveBarrel : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         if (shouldDrawRadius)
         {

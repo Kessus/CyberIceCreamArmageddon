@@ -51,7 +51,7 @@ public class SpawnerManager : MonoBehaviour
     {
         List<Spawner> availableSpawners = spawners.Where(spawner => spawner.IsReady && spawner.associatedStage == SceneGoalManager.goalManager.CurrentStageIndex).ToList();
         int enemyCount = activeEnemies;
-        for (int i = 0; i < Mathf.Min(desiredEnemyCount, SceneGoalManager.goalManager.RemainingEnemies - enemyCount); i++)
+        for (int i = 0; i < Mathf.Min(desiredEnemyCount - enemyCount, SceneGoalManager.goalManager.RemainingEnemies - enemyCount); i++)
         {
             if (availableSpawners.Count > 0)
             {

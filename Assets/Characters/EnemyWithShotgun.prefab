@@ -112,6 +112,11 @@ PrefabInstance:
       propertyPath: originPoint
       value: 
       objectReference: {fileID: 8832055073091558271}
+    - target: {fileID: 7011204781277547848, guid: 27dcf1e960ac17b43a7397e9973e5d4c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7011204781277547854, guid: 27dcf1e960ac17b43a7397e9973e5d4c,
         type: 3}
       propertyPath: m_Name
@@ -135,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 7011204781277547855, guid: 27dcf1e960ac17b43a7397e9973e5d4c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7011204781277547855, guid: 27dcf1e960ac17b43a7397e9973e5d4c,
         type: 3}

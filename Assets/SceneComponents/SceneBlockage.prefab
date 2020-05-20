@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9040101822335224300}
   - component: {fileID: 4181648074669890860}
   - component: {fileID: 1760371551322212881}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: SceneBlockage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

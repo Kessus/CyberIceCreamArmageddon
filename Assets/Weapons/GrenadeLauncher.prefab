@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 846589225814135799}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.7725167, y: 4.1419263, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 0}
   m_Children:
   - {fileID: 2192869929164165664}
   m_Father: {fileID: 0}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e7b0a430f51c5f54982e5ce119deb9f7, type: 3}
-  m_Color: {r: 0.29957277, g: 0.6415094, b: 0.3368274, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d99fbce5ef06be44cb76ad831c062d39, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,10 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponBehaviour: {fileID: 1793681473}
-  triggerKey: Fire2
+  triggerKey: Fire1
   isAutomatic: 0
   cooldownDuration: 2
   visibilityTime: 1
+  weaponIcon: {fileID: 21300000, guid: 73eafc1f3b6132443bc2bbc55911f961, type: 3}
   reactToButtons: 0
 --- !u!114 &1793681473
 MonoBehaviour:
@@ -141,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7984331819791651570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 0.26, z: 0}
+  m_LocalPosition: {x: 0.318, y: 0.029, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6681149533926584893}
