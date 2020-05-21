@@ -128,15 +128,16 @@ public class Enemy : MonoBehaviour
             Vector2 force = new Vector2(direction.x * speed, rb.velocity.y);
 
             rb.velocity = force;
-            
+
+            Debug.Log(direction.y);
             if (direction.y != 1.0f)
             {
                 Jumping jumpScript = gameObject.GetComponent<Jumping>();
-                if (direction.y > 0.35f)
+                if (direction.y > 0.99f)
                 {
                     jumpScript.TryJump();
                 }
-                else if (direction.y < -0.35f)
+                else if (direction.y < -0.85f)
                 {
                     StartCoroutine(jumpScript.TryJumpOffPlatform());
                 }

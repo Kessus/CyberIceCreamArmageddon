@@ -5,38 +5,74 @@ using UnityEngine.UI;
 
 public class WeaponCooldownIndicator : MonoBehaviour
 {
-    public Image leftWeaponIcon;
-    public Image rightWeaponIcon;
-    public Color cooldownTint;
+    public Image secondaryWeaponIcon;
+    public Image primaryWeaponIcon;
+    public Slider secondaryWeaponCooldownSlider;
+    public Slider primaryWeaponCooldownSlider;
+    public Color cooldownTintColor;
     public static WeaponCooldownIndicator weaponCooldowns;
+
+    private float primaryWeaponCooldownTimeLeft = 0.0f;
+    private float secondaryWeaponCooldownTimeLeft = 0.0f;
 
     public WeaponCooldownIndicator()
     {
         weaponCooldowns = this;
     }
 
+    private void Update()
+    {
+        primaryWeaponCooldownTimeLeft = Mathf.Max(0, primaryWeaponCooldownTimeLeft - Time.deltaTime);
+        primaryWeaponCooldownSlider.value = primaryWeaponCooldownTimeLeft;
+        secondaryWeaponCooldownTimeLeft = Mathf.Max(0, secondaryWeaponCooldownTimeLeft - Time.deltaTime);
+        secondaryWeaponCooldownSlider.value = secondaryWeaponCooldownTimeLeft;
+    }
+
     public void RegisterWeaponChange(Weapon newWeapon)
     {
         Image relevantIcon;
         if (newWeapon.triggerKey == "Fire1")
-            relevantIcon = rightWeaponIcon;
+        {
+            relevantIcon = primaryWeaponIcon;
+            primaryWeaponCooldownSlider.maxValue = newWeapon.cooldownDuration;
+        }
         else
-            relevantIcon = leftWeaponIcon;
+        {
+            relevantIcon = secondaryWeaponIcon;
+            secondaryWeaponCooldownSlider.maxValue = newWeapon.cooldownDuration;
+        }
 
         relevantIcon.sprite = newWeapon.weaponIcon;
     }
 
     public void ChangeWeaponCooldown(Weapon weapon, bool isOnCooldown)
     {
-        Image relevantIcon;
-        if (weapon.triggerKey == "Fire1")
-            relevantIcon = rightWeaponIcon;
-        else
-            relevantIcon = leftWeaponIcon;
-
         if (isOnCooldown)
-            relevantIcon.color = cooldownTint;
+        {
+            if (weapon.triggerKey == "Fire1")
+            {
+                primaryWeaponCooldownTimeLeft = weapon.cooldownDuration;
+                primaryWeaponIcon.color = cooldownTintColor;
+            }
+            else
+            {
+                secondaryWeaponCooldownTimeLeft = weapon.cooldownDuration;
+                secondaryWeaponIcon.color = cooldownTintColor;
+            }
+        }
         else
-            relevantIcon.color = Color.white;
+        {
+            if (weapon.triggerKey == "Fire1")
+            {
+                primaryWeaponCooldownTimeLeft = 0.0f;
+                primaryWeaponIcon.color = Color.white;
+            }
+            else
+            {
+                secondaryWeaponCooldownTimeLeft = 0.0f;
+                secondaryWeaponIcon.color = Color.white;
+            }
+        }
+
     }
 }
