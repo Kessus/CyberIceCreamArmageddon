@@ -968,15 +968,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1350099362733478811, guid: 6d71e04de20762c4ba24db7bbb41a762,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350099362733478811, guid: 6d71e04de20762c4ba24db7bbb41a762,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1642237931394255679, guid: 6d71e04de20762c4ba24db7bbb41a762,
         type: 3}
       propertyPath: m_Name
       value: DeathScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 1642237931394255679, guid: 6d71e04de20762c4ba24db7bbb41a762,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2950543751239061648, guid: 6d71e04de20762c4ba24db7bbb41a762,
         type: 3}

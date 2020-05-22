@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7810046897948822162}
   - component: {fileID: 5274649404067458636}
   - component: {fileID: 3913869294657532449}
+  - component: {fileID: 7981186256377363045}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -118,6 +119,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7981186256377363045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64235487619369931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f931984d5405014f86d9d1b39088a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonOnClickSoundName: ButtonOnClick
 --- !u!1 &91247254154836034
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +145,7 @@ GameObject:
   - component: {fileID: 91247254154836044}
   - component: {fileID: 91247254154836035}
   m_Layer: 5
-  m_Name: InGameUI
+  m_Name: PauseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,6 +248,7 @@ GameObject:
   - component: {fileID: 8513511913692053683}
   - component: {fileID: 6499722358128352363}
   - component: {fileID: 8108997813010307702}
+  - component: {fileID: 6406654275874738804}
   m_Layer: 5
   m_Name: ExitToDesktop
   m_TagString: Untagged
@@ -340,6 +355,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6406654275874738804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512986130320200359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f931984d5405014f86d9d1b39088a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonOnClickSoundName: ButtonOnClick
 --- !u!1 &609889357398990034
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +457,7 @@ GameObject:
   - component: {fileID: 7588591930426083647}
   - component: {fileID: 2117130965330701550}
   - component: {fileID: 3673976982835038536}
+  - component: {fileID: 2222890360867615045}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -535,6 +564,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2222890360867615045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602893640393753264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f931984d5405014f86d9d1b39088a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonOnClickSoundName: ButtonOnClick
 --- !u!1 &4563168217891739913
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +666,7 @@ GameObject:
   - component: {fileID: 4155626343991812630}
   - component: {fileID: 1540133922980199743}
   - component: {fileID: 9083237920865802886}
+  - component: {fileID: 7300332883391481505}
   m_Layer: 5
   m_Name: ExitToMenu
   m_TagString: Untagged
@@ -730,6 +773,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7300332883391481505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6336379242036779239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f931984d5405014f86d9d1b39088a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonOnClickSoundName: ButtonOnClick
 --- !u!1 &6787879067286956360
 GameObject:
   m_ObjectHideFlags: 0

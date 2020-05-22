@@ -10,8 +10,13 @@ public class Damage : MonoBehaviour
     public float goggleFatigueDamagePercent = 0.15f;
     public float fatigueDelay = 6.0f;
     public float fatigueFrequency = 1.0f;
+    public float enemyReceivedDamageMultiplier = 5.0f;
     public HealthBarBody healthBarScript;
     public HealthBarBody goggleHealthBarScript;
+    public ParticleSystem damageParticleSystem;
+    public ParticleSystem deathParticleSystem;
+    public string damageSoundName;
+    public string deathSoundName;
 
     [HideInInspector]
     public bool IsPlayer {
@@ -55,8 +60,8 @@ public class Damage : MonoBehaviour
     {
         if (!isPlayer)
         {
-            //For testing purposes
-            damage *= 5;
+            //Enemies receive more damage than players
+            damage = Mathf.FloorToInt(damage * enemyReceivedDamageMultiplier);
 
             bodyHealth -= damage;
             if(healthBarScript != null)
@@ -82,6 +87,9 @@ public class Damage : MonoBehaviour
                     Die();
             }
         }
+        if (damageParticleSystem != null)
+            damageParticleSystem.Play();
+        AudioManager.Manager.PlaySound(damageSoundName);
     }
 
     public void RegisterAssimilation(Damage damageScript)
@@ -112,5 +120,8 @@ public class Damage : MonoBehaviour
             DeathScreen.deathScreen.gameObject.SetActive(true);
             Destroy(gameObject);
         }
+        if (deathParticleSystem != null)
+            deathParticleSystem.Play();
+        AudioManager.Manager.PlaySound(deathSoundName);
     }
 }

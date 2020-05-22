@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour
     public int damageAmount = 100;
     public float timeToLive = 4.0f;
     public float speedVariation = 0.0f;
+    public ParticleSystem hitParticle;
+    public string hitSoundName;
 
     [SerializeField]
     protected LayerMask ignoredLayers = new LayerMask();
@@ -90,6 +92,9 @@ public class Projectile : MonoBehaviour
             else if (bossDamageScript != null)
                 bossDamageScript.ReceiveDamage(damageAmount);
 
+            if (hitParticle != null)
+                hitParticle.Play();
+            AudioManager.Manager.PlaySound(hitSoundName);
             hasDealtDamage = true;
             Destroy(gameObject);
         }

@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 
     public static GameObject playerObject;
     public bool isDead = false;
+    public ParticleSystem hijackParticleSystem;
+    public string hijackSoundName;
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
@@ -100,9 +102,7 @@ public class Player : MonoBehaviour
         playerObject = gameObject;
 
         GetComponent<Damage>().IsPlayer = true;
-
         GetComponent<Jumping>().jumpCooldown = 0.0f;
-
         RotateTowardsMouseCursor();
     }
 
@@ -115,8 +115,11 @@ public class Player : MonoBehaviour
 
         if (hijackTarget.GetComponent<Enemy>().CanBeHijacked)
         {
-            hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
+            if (hijackParticleSystem != null)
+                hijackParticleSystem.Play();
+            AudioManager.Manager.PlaySound(hijackSoundName);
 
+            hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
             hijackTarget.AddComponent<Player>();
 
             Destroy(gameObject);

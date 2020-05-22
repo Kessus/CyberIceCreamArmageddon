@@ -10,6 +10,10 @@ public class GravityTrap : MonoBehaviour
     public LayerMask affectedLayers = new LayerMask();
     public float effectDuration = 3.0f;
     public float effectCooldown = 3.0f;
+    public ParticleSystem activationParticleSystem;
+    public ParticleSystem deactivationParticleSystem;
+    public string activationSoundName;
+    public string deactivationSoundName;
 
     private List<Vector2> objectVelocityCache = new List<Vector2>();
     private bool isActive = false;
@@ -27,6 +31,10 @@ public class GravityTrap : MonoBehaviour
     private IEnumerator ActivateTrap()
     {
         isActive = true;
+        if (activationParticleSystem != null)
+            activationParticleSystem.Play();
+        AudioManager.Manager.PlaySound(activationSoundName);
+
         List<RaycastHit2D> collidersInRange = new List<RaycastHit2D>(Physics2D.BoxCastAll(transform.position + (Vector3)effectOffset, effectSize, 0.0f, new Vector2(), 0.0f, affectedLayers));
 
         foreach(RaycastHit2D collision in collidersInRange)
@@ -40,6 +48,9 @@ public class GravityTrap : MonoBehaviour
 
         yield return new WaitForSeconds(effectDuration);
 
+        if (deactivationParticleSystem != null)
+            deactivationParticleSystem.Play();
+        AudioManager.Manager.PlaySound(deactivationSoundName);
         foreach (RaycastHit2D collision in collidersInRange)
         {
             Rigidbody2D rigidBody = collision.collider.gameObject.GetComponent<Rigidbody2D>();
