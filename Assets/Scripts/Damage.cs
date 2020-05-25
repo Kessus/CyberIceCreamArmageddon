@@ -36,6 +36,7 @@ public class Damage : MonoBehaviour
     public int goggleHealth = 100;
 
     private bool isPlayer = false;
+    private bool isDead = false;
 
     private void Start()
     {
@@ -58,10 +59,15 @@ public class Damage : MonoBehaviour
 
     public void ReceiveDamage(int damage)
     {
+        if (isDead)
+            return;
+
         if (!isPlayer)
         {
             //Enemies receive more damage than players
             damage = Mathf.FloorToInt(damage * enemyReceivedDamageMultiplier);
+
+            Player.playerObject.GetComponent<Player>().damageDealt += damage;
 
             bodyHealth -= damage;
             if(healthBarScript != null)
@@ -74,6 +80,7 @@ public class Damage : MonoBehaviour
         }
         else
         {
+            Player.playerObject.GetComponent<Player>().damageReceived += damage;
             bodyHealth -= damage;
             int damageLeft = -bodyHealth;
             bodyHealth = Mathf.Clamp(bodyHealth, 0, maxBodyHealth);
@@ -84,7 +91,10 @@ public class Damage : MonoBehaviour
                 goggleHealth -= damageLeft;
                 goggleHealthBarScript.SetHealth(Mathf.Clamp(goggleHealth, 0, maxGoggleHealth));
                 if (goggleHealth <= 0)
-                    Die();
+                {
+                    gameObject.GetComponentInChildren<Animator>().SetTrigger("HasDied");
+                    isDead = true;
+                }
             }
         }
         if (damageParticleSystem != null)
@@ -96,6 +106,7 @@ public class Damage : MonoBehaviour
     {
         bodyHealth = maxBodyHealth;
         goggleHealth = damageScript.goggleHealth;
+        maxGoggleHealth = damageScript.maxGoggleHealth;
         healthBarScript = damageScript.healthBarScript;
         goggleHealthBarScript = damageScript.goggleHealthBarScript;
         healthBarScript.SetMaxHealth(maxBodyHealth);
@@ -104,6 +115,9 @@ public class Damage : MonoBehaviour
 
     private void DealFatigueDamage()
     {
+        if (SceneGoalManager.goalManager.StageComplete)
+            return;
+
         if(bodyHealth > 0)
             ReceiveDamage(Mathf.RoundToInt(bodyFatigueDamagePercent * maxBodyHealth));
         else
@@ -112,16 +126,18 @@ public class Damage : MonoBehaviour
 
     public void Die()
     {
-        if (!isPlayer)
-            Destroy(gameObject);
-        else
-        {
-            Player.playerObject.GetComponent<Player>().isDead = true;
-            DeathScreen.deathScreen.gameObject.SetActive(true);
-            Destroy(gameObject);
-        }
         if (deathParticleSystem != null)
             deathParticleSystem.Play();
         AudioManager.Manager.PlaySound(deathSoundName);
+
+        if (isPlayer)
+        {
+            Player.playerObject.GetComponent<Player>().isDead = true;
+            DeathScreen.deathScreen.gameObject.SetActive(true);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

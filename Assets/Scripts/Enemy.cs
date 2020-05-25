@@ -95,6 +95,8 @@ public class Enemy : MonoBehaviour
         if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead)
             return;
 
+        gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", Mathf.Abs(rb.velocity.x) >= 0.1f);
+
         Vector3 playerPosition = Player.playerObject.transform.position;
         if (playerPosition.x > transform.position.x && isFacingLeft)
         {
@@ -122,14 +124,12 @@ public class Enemy : MonoBehaviour
             if (shouldRunAway && (playerPosition - transform.position).magnitude <= runAwayDistance)
             {
                 direction *= -1;
-                Debug.Log(direction);
             }
 
             Vector2 force = new Vector2(direction.x * speed, rb.velocity.y);
 
             rb.velocity = force;
 
-            Debug.Log(direction.y);
             if (direction.y != 1.0f)
             {
                 Jumping jumpScript = gameObject.GetComponent<Jumping>();

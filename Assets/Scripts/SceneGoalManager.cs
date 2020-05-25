@@ -10,10 +10,14 @@ public class SceneGoalManager : MonoBehaviour
     public delegate void StageAdvanceDelegate(int newStageIndex);
     public event StageAdvanceDelegate OnStageAdvance;
     public Text enemiesLeftText;
+    public GameObject stageProgressionArrow;
+    public GameObject stageCompletionScreen;
     public int CurrentStageIndex { get; private set; } = -1;
     public int RemainingEnemies { get; private set; } = 0;
+    public float StageDuration { get; private set; } = 0.0f;
 
-    private CameraFollow cameraScript;    
+    private CameraFollow cameraScript;
+    public bool StageComplete { get; private set; } = false;
     
     public SceneGoalManager()
     {
@@ -25,6 +29,12 @@ public class SceneGoalManager : MonoBehaviour
         CurrentStageIndex = 0;
         OnStageAdvance?.Invoke(CurrentStageIndex);
         BeginNewStage();
+    }
+
+    private void Update()
+    {
+        if(!StageComplete)
+            StageDuration += Time.deltaTime;
     }
 
     public void RegisterEnemyDeath()
@@ -39,13 +49,19 @@ public class SceneGoalManager : MonoBehaviour
     }
     
     //Allow the player to progress further without actually spawning new enemies
-    private void AdvanceToNextStage()
+    public void AdvanceToNextStage()
     {
         CurrentStageIndex++;
-        if(stageEnemyCountGoals.Count > CurrentStageIndex)
+        if (stageEnemyCountGoals.Count > CurrentStageIndex)
+        {
             OnStageAdvance?.Invoke(CurrentStageIndex);
-        //else
-            //Display level finish screen
+            stageProgressionArrow.SetActive(true);
+        }
+        else
+        {
+            StageComplete = true;
+            stageCompletionScreen.SetActive(true);
+        }
     }
 
     //Start spawning new enemies
@@ -53,5 +69,6 @@ public class SceneGoalManager : MonoBehaviour
     {
         RemainingEnemies = stageEnemyCountGoals[CurrentStageIndex];
         enemiesLeftText.text = "Enemies left: " + RemainingEnemies;
+        stageProgressionArrow.SetActive(false);
     }
 }

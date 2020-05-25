@@ -482,6 +482,12 @@ Transform:
   m_Father: {fileID: 980917866}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &80421742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 80421742, guid: ed874c528540ef749932260063c0fda7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1840336807297049181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &85070600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2000062054896589158, guid: 61bd86cca2a84f540942aad855dd850e,
@@ -2011,6 +2017,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &333773332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3904295575218941819, guid: ed874c528540ef749932260063c0fda7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1840336807297049181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &357599539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 91247254154836034, guid: 61ad581296d5ca5459596913f94b7c83,
@@ -11171,6 +11183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageEnemyCountGoals: 05000000080000000c000000
   enemiesLeftText: {fileID: 520891858}
+  stageProgressionArrow: {fileID: 80421742}
+  stageCompletionScreen: {fileID: 333773332}
 --- !u!114 &2039536792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12464,7 +12478,8 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5248632245279597372, guid: 889c37deb1b38a345b5a88897f45e328, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 889c37deb1b38a345b5a88897f45e328, type: 3}
 --- !u!4 &2533271022372816682 stripped
 Transform:
