@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097857525152004874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.263, y: 0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8362162238507689024}
@@ -156,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6810998599505285735}
   - component: {fileID: 8400043276344193830}
+  - component: {fileID: 4125478216239372357}
   m_Layer: 0
   m_Name: ConeFace
   m_TagString: Untagged
@@ -227,6 +228,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4125478216239372357
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846763754204432121}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c6b25450d5d6ca24aa0aba2b797ce5b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3472344513789823372
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 3472344513789823372}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 5138572644322810340}
   - {fileID: 7986574729999913970}
@@ -344,10 +364,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxBodyHealth: 100
-  maxGoggleHealth: 500
-  bodyFatigueDamagePercent: 0.1
-  goggleFatigueDamagePercent: 0.15
-  fatigueDelay: 6
+  maxGoggleHealth: 2000
+  bodyFatigueDamagePercent: 0.05
+  goggleFatigueDamagePercent: 0.05
+  fatigueDelay: 2
   fatigueFrequency: 1
   enemyReceivedDamageMultiplier: 5
   healthBarScript: {fileID: 0}
@@ -356,6 +376,7 @@ MonoBehaviour:
   deathParticleSystem: {fileID: 0}
   damageSoundName: 
   deathSoundName: 
+  destroyInstantlyOnDeath: 0
   bodyHealth: 100
   goggleHealth: 100
 --- !u!95 &3679584592111910166
@@ -387,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2034628813435918276}
   - component: {fileID: 3828822419491521552}
+  - component: {fileID: 7323266550635066657}
   m_Layer: 0
   m_Name: ConeFacePivot
   m_TagString: Untagged
@@ -421,7 +443,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2869947841dd67349a0f78978799c9b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimTowardsPlayer: 0
+  aimTowardsPlayer: 1
+--- !u!114 &7323266550635066657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725731197561141051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74827066cf417624186bd6db6ed30f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4626609093687714543
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,7 +481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4626609093687714543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.21, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7848113610984557658}
@@ -492,7 +526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6487633966060022946}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0.23, y: 0, z: 0.5}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 5138572644322810340}
@@ -573,7 +607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7230313211858411945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0.296, y: 0, z: -0.5}
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 7986574729999913970}

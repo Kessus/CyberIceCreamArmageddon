@@ -17,6 +17,7 @@ public class Damage : MonoBehaviour
     public ParticleSystem deathParticleSystem;
     public string damageSoundName;
     public string deathSoundName;
+    public bool destroyInstantlyOnDeath = false;
 
     [HideInInspector]
     public bool IsPlayer {
@@ -36,7 +37,6 @@ public class Damage : MonoBehaviour
     public int goggleHealth = 100;
 
     private bool isPlayer = false;
-    private bool isDead = false;
 
     private void Start()
     {
@@ -59,14 +59,18 @@ public class Damage : MonoBehaviour
 
     public void ReceiveDamage(int damage)
     {
-        if (isDead)
+        if (Player.playerObject.GetComponent<Player>().isDead)
             return;
 
         if (!isPlayer)
         {
+            Enemy enemy = gameObject.GetComponent<Enemy>();
+            if (enemy != null && enemy.isDead)
+                return;
+
             //Enemies receive more damage than players
             damage = Mathf.FloorToInt(damage * enemyReceivedDamageMultiplier);
-
+            
             Player.playerObject.GetComponent<Player>().damageDealt += damage;
 
             bodyHealth -= damage;
@@ -75,7 +79,15 @@ public class Damage : MonoBehaviour
 
             if (bodyHealth <= 0)
             {
-                Die();
+                if (destroyInstantlyOnDeath)
+                    Destroy(gameObject);
+                else
+                {
+                    Animator animator = gameObject.GetComponent<Animator>();
+                    if (animator != null)
+                        animator.SetTrigger("HasDied");
+                    enemy.isDead = true;
+                }
             }
         }
         else
@@ -92,8 +104,8 @@ public class Damage : MonoBehaviour
                 goggleHealthBarScript.SetHealth(Mathf.Clamp(goggleHealth, 0, maxGoggleHealth));
                 if (goggleHealth <= 0)
                 {
-                    gameObject.GetComponentInChildren<Animator>().SetTrigger("HasDied");
-                    isDead = true;
+                    gameObject.GetComponent<Animator>().SetTrigger("HasDied");
+                    Player.playerObject.GetComponent<Player>().isDead = true;
                 }
             }
         }
@@ -132,12 +144,18 @@ public class Damage : MonoBehaviour
 
         if (isPlayer)
         {
-            Player.playerObject.GetComponent<Player>().isDead = true;
             DeathScreen.deathScreen.gameObject.SetActive(true);
         }
         else
         {
-            Destroy(gameObject);
+            healthBarScript.gameObject.SetActive(false);
+            StartCoroutine("DestroyBody");
         }
+    }
+
+    public IEnumerator DestroyBody()
+    {
+        yield return new WaitForSeconds(4.0f);
+        Destroy(gameObject);
     }
 }

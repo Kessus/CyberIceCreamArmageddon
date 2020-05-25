@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public float playerShootDistance = 8.0f;
     public float runAwayDistance = 0.0f;
     public GameObject healthBar = null;
+    [HideInInspector]
+    public bool isDead = false;
     public bool CanBeHijacked { get
         {
             Damage damageScript = GetComponent<Damage>();
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
 
     private void ShootAtPlayer()
     {
-        if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead)
+        if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead || this.isDead)
             return;
 
         if (canShoot)
@@ -92,10 +94,10 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead)
+        if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead || this.isDead)
             return;
 
-        gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", Mathf.Abs(rb.velocity.x) >= 0.1f);
+        gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", Mathf.Abs(rb.velocity.x) >= 0.5f);
 
         Vector3 playerPosition = Player.playerObject.transform.position;
         if (playerPosition.x > transform.position.x && isFacingLeft)

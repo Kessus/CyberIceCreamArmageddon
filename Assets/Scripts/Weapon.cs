@@ -19,6 +19,7 @@ public class Weapon : MonoBehaviour
     private List<SpriteRenderer> sprites;
     private bool usedWeapon = false;
     private Animator animator;
+    private bool ownerDead = false;
 
     private void Start()
     {
@@ -30,6 +31,13 @@ public class Weapon : MonoBehaviour
     {
         if (InGameUi.IsGamePaused)
             return;
+
+        if (!ownerDead && (GetComponentInParent<Enemy>()?.isDead ?? false))
+        {
+            foreach (SpriteRenderer sprite in sprites)
+                sprite.enabled = false;
+            ownerDead = true;
+        }
 
         if (!usedWeapon || isAutomatic)
         {

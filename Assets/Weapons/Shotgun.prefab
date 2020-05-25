@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7011204781277547848}
   - component: {fileID: 8020102254093278978}
   - component: {fileID: 4372146125768568065}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7011204781277547854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.227, y: 0.012, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.2, y: 2.2, z: 1}
   m_Children:
   - {fileID: 7011204782496397528}
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   isAutomatic: 0
   cooldownDuration: 0.75
   visibilityTime: 0.5
-  weaponIcon: {fileID: 21300000, guid: 0a16b8e43da21fb46ac0dd45bb4ca1af, type: 3}
+  weaponIcon: {fileID: 21300004, guid: e1e1b01e4a48aa242848155e8092e75d, type: 3}
   reactToButtons: 0
 --- !u!114 &4372146125768568065
 MonoBehaviour:
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7011204782496397528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: firePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7011204782496397535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.398, y: 0.129, z: 0}
+  m_LocalPosition: {x: 0.329, y: 0.066, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7011204781277547855}

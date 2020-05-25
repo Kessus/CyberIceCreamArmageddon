@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
         SoundInstance sound = availableSounds.FirstOrDefault(s => s.clipName == soundName);
         if(sound == null)
         {
-            Debug.LogError("Audio Manager doesn't contain sound with name: "+soundName);
+            Debug.LogWarning("Audio Manager doesn't contain sound with name: "+soundName);
             return;
         }
 
@@ -59,7 +59,7 @@ public class AudioManager : MonoBehaviour
         SoundInstance sound = availableSounds.FirstOrDefault(s => s.clipName == soundName);
         if (sound == null)
         {
-            Debug.LogError("Audio Manager doesn't contain sound with name: " + soundName);
+            Debug.LogWarning("Audio Manager doesn't contain sound with name: " + soundName);
             return;
         }
 

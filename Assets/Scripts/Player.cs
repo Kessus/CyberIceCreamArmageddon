@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InGameUi.IsGamePaused)
+        if (InGameUi.IsGamePaused || isDead)
             return;
 
         if (Input.GetButtonDown("Jump"))
@@ -56,16 +57,19 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead)
+            return;
+
         float movementInput = Input.GetAxis("Horizontal");
 
         if (movementInput != 0)
         {
-            gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", Mathf.Abs(movementInput) >= 0.1f);
+            gameObject.GetComponent<Animator>().SetBool("IsMoving", Mathf.Abs(movementInput) >= 0.5f);
             rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
         }
         else
         {
-            gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", false);
+            gameObject.GetComponent<Animator>().SetBool("IsMoving", false);
             rigidBody.velocity = new Vector2(0.0f, rigidBody.velocity.y);
         }
     }
@@ -114,7 +118,8 @@ public class Player : MonoBehaviour
 
     private void TryHijack()
     {
-        RaycastHit2D hitResult = Physics2D.BoxCast(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, new Vector2(), 0.0f, LayerMask.GetMask("Enemy"));
+        List<RaycastHit2D> hitTargets = new List<RaycastHit2D>(Physics2D.BoxCastAll(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, new Vector2(), 0.0f, LayerMask.GetMask("Enemy")));
+        RaycastHit2D hitResult = hitTargets.FirstOrDefault(c => !c.collider.gameObject.GetComponent<Enemy>().isDead);
         if (hitResult.collider == null)
             return;
         GameObject hijackTarget = hitResult.collider.gameObject;
@@ -126,6 +131,7 @@ public class Player : MonoBehaviour
             AudioManager.Manager.PlaySound(hijackSoundName);
 
             hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
+            hijackTarget.GetComponentInChildren<FaceSwap>().SwapFace(GetComponentInChildren<FaceSwap>());
             hijackTarget.AddComponent<Player>();
 
             Destroy(gameObject);

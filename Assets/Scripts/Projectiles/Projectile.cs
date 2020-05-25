@@ -83,6 +83,10 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnHit(Collider2D hitInfo)
     {
+        //Projectiles don't react to dead enemies
+        if (hitInfo.gameObject.GetComponent<Enemy>()?.isDead ?? false)
+            return;
+
         if ((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
         {
             Damage damageScript = hitInfo.GetComponent<Damage>();

@@ -21,14 +21,14 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 59515179f2a9df94aa0d7aa57d2e51ad, type: 3}
-    - time: 0.23333333
+    - time: 0.16666667
       value: {fileID: 21300000, guid: 842348499a999bf44ba466e4eec69c6d, type: 3}
-    - time: 0.43333334
+    - time: 0.33333334
       value: {fileID: 21300000, guid: 0ec8f1d511978774fba188251c3a3eb4, type: 3}
-    - time: 0.6666667
+    - time: 0.5
       value: {fileID: 21300000, guid: f35b2e2447c3c454abbea2bd3d7e8c81, type: 3}
     attribute: m_Sprite
-    path: 
+    path: ConeBody
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -39,7 +39,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 0
+      path: 2252131308
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -55,7 +55,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.68333334
+    m_StopTime: 0.51666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

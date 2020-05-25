@@ -5,14 +5,17 @@ using UnityEngine;
 public class SceneBlockage : MonoBehaviour
 {
     public int associatedStageIndex = 0;
+    
+    private SceneGoalManager.StageAdvanceDelegate blockageActiveFunction;
     private void Start()
     {
-        SceneGoalManager.goalManager.OnStageAdvance += ((int newStageIndex) => { SetBlockageActiveState(newStageIndex != associatedStageIndex); });
+        blockageActiveFunction = ((int newStageIndex) => { SetBlockageActiveState(newStageIndex != associatedStageIndex); });
+        SceneGoalManager.goalManager.OnStageAdvance += blockageActiveFunction;
     }
 
     private void OnDestroy()
     {
-        
+        SceneGoalManager.goalManager.OnStageAdvance -= blockageActiveFunction;
     }
     public void SetBlockageActiveState(bool newState)
     {

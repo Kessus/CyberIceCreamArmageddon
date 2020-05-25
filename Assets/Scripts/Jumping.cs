@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Jumping : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class Jumping : MonoBehaviour
     {
         if (remainingJumpCount > 0 && !jumpOnCooldown)
         {
-            gameObject.GetComponentInChildren<Animator>().SetBool("IsInAir", true);
+            gameObject.GetComponent<Animator>().SetBool("IsInAir", true);
             remainingJumpCount--;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, (Vector2.up * jumpPower).y);
             StartCoroutine(HandleJumpCooldown());
@@ -58,7 +59,7 @@ public class Jumping : MonoBehaviour
         RaycastHit2D platform = TryGetGroundObject();
         if (platform.collider != null && platform.collider.gameObject.layer == LayerMask.NameToLayer("Platform") && !isJumpingOff)
         {
-            gameObject.GetComponentInChildren<Animator>().SetBool("IsInAir", true);
+            gameObject.GetComponent<Animator>().SetBool("IsInAir", true);
             Physics2D.IgnoreCollision(characterCollision, platform.collider, true);
             isJumpingOff = true;
             yield return new WaitForSeconds(0.5f);
@@ -76,7 +77,7 @@ public class Jumping : MonoBehaviour
     {
         if (IsGrounded() && rigidBody.velocity.y < 0.1f && rigidBody.velocity.y > -0.1f)
         {
-            gameObject.GetComponentInChildren<Animator>().SetBool("IsInAir", false);
+            gameObject.GetComponent<Animator>().SetBool("IsInAir", false);
             remainingJumpCount = jumpCount;
         }
     }
@@ -90,6 +91,7 @@ public class Jumping : MonoBehaviour
     private RaycastHit2D TryGetGroundObject()
     {
         float castDistance = 0.05f;
-        return Physics2D.BoxCast(characterCollision.bounds.min, new Vector2(characterCollision.bounds.size.x, characterCollision.bounds.size.y / 10), 0.0f, Vector2.down, castDistance, groundCheckLayers);
+        List<RaycastHit2D> collidingTargets = new List<RaycastHit2D>(Physics2D.BoxCastAll(characterCollision.bounds.min, new Vector2(characterCollision.bounds.size.x, characterCollision.bounds.size.y / 10), 0.0f, Vector2.down, castDistance, groundCheckLayers));
+        return collidingTargets.FirstOrDefault(c => ((1 << c.collider.gameObject.layer) & groundCheckLayers) != 0);
     }
 }

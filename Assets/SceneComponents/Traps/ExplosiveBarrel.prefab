@@ -52,8 +52,14 @@ MonoBehaviour:
   goggleFatigueDamagePercent: 0
   fatigueDelay: 0
   fatigueFrequency: 0
+  enemyReceivedDamageMultiplier: 5
   healthBarScript: {fileID: 0}
   goggleHealthBarScript: {fileID: 0}
+  damageParticleSystem: {fileID: 0}
+  deathParticleSystem: {fileID: 0}
+  damageSoundName: 
+  deathSoundName: 
+  destroyInstantlyOnDeath: 1
   bodyHealth: 1
   goggleHealth: 0
 --- !u!114 &3674777258279373799
@@ -71,6 +77,8 @@ MonoBehaviour:
   blastDamage: 100
   blastRadius: 3.5
   shouldDrawRadius: 1
+  explosionSoundName: 
+  explosionParticleSystem: {fileID: 0}
 --- !u!212 &4167522492887286808
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -5804,6 +5804,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: platformHalfStatic
       objectReference: {fileID: 0}
+    - target: {fileID: 1526245736081084692, guid: 655df729999af9441acbb13916e8fe75,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1766004845116430724, guid: 655df729999af9441acbb13916e8fe75,
         type: 3}
       propertyPath: m_SortingOrder
@@ -7734,6 +7739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1401753015}
   - component: {fileID: 1401753014}
+  - component: {fileID: 1401753016}
   m_Layer: 0
   m_Name: Fog
   m_TagString: Untagged
@@ -7805,6 +7811,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1401753016
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401753013}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bcc139b6d62d48b47bdd7198d9a3b4f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1408852850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9040101822335224300, guid: 52fb3e8d5d7e2da4b9d95d4d820e01af,
@@ -9182,19 +9207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87296eecba75b3346bf984101b81f2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSounds:
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    source: {fileID: 0}
-    loop: 0
-  - clipName: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-    loop: 0
+  availableSounds: []
 --- !u!1 &1611237237
 GameObject:
   m_ObjectHideFlags: 0
@@ -12393,11 +12406,6 @@ PrefabInstance:
       propertyPath: goggleHealthBarScript
       value: 
       objectReference: {fileID: 1636572831}
-    - target: {fileID: 1145564325203579033, guid: 889c37deb1b38a345b5a88897f45e328,
-        type: 3}
-      propertyPath: goggleFatigueDamagePercent
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 4019349909127390550, guid: 889c37deb1b38a345b5a88897f45e328,
         type: 3}
       propertyPath: m_Enabled
@@ -12478,8 +12486,7 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5248632245279597372, guid: 889c37deb1b38a345b5a88897f45e328, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 889c37deb1b38a345b5a88897f45e328, type: 3}
 --- !u!4 &2533271022372816682 stripped
 Transform:
