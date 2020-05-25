@@ -39,6 +39,7 @@ public class Jumping : MonoBehaviour
     {
         if (remainingJumpCount > 0 && !jumpOnCooldown)
         {
+            gameObject.GetComponentInChildren<Animator>().SetBool("IsInAir", true);
             remainingJumpCount--;
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, (Vector2.up * jumpPower).y);
             StartCoroutine(HandleJumpCooldown());
@@ -57,6 +58,7 @@ public class Jumping : MonoBehaviour
         RaycastHit2D platform = TryGetGroundObject();
         if (platform.collider != null && platform.collider.gameObject.layer == LayerMask.NameToLayer("Platform") && !isJumpingOff)
         {
+            gameObject.GetComponentInChildren<Animator>().SetBool("IsInAir", true);
             Physics2D.IgnoreCollision(characterCollision, platform.collider, true);
             isJumpingOff = true;
             yield return new WaitForSeconds(0.5f);
@@ -74,6 +76,7 @@ public class Jumping : MonoBehaviour
     {
         if (IsGrounded() && rigidBody.velocity.y < 0.1f && rigidBody.velocity.y > -0.1f)
         {
+            gameObject.GetComponentInChildren<Animator>().SetBool("IsInAir", false);
             remainingJumpCount = jumpCount;
         }
     }

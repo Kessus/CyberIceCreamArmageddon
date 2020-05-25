@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     public bool isDead = false;
     public ParticleSystem hijackParticleSystem;
     public string hijackSoundName;
+    [HideInInspector]
+    public int damageDealt = 0;
+    [HideInInspector]
+    public int damageReceived = 0;
 
     private Rigidbody2D rigidBody;
     private BoxCollider2D playerCollision;
@@ -55,11 +59,13 @@ public class Player : MonoBehaviour
         float movementInput = Input.GetAxis("Horizontal");
 
         if (movementInput != 0)
-        { 
+        {
+            gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", Mathf.Abs(movementInput) >= 0.1f);
             rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
         }
         else
         {
+            gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", false);
             rigidBody.velocity = new Vector2(0.0f, rigidBody.velocity.y);
         }
     }
