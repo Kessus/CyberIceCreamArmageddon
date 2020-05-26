@@ -138,6 +138,9 @@ MonoBehaviour:
   damageAmount: 2
   timeToLive: 0.8
   speedVariation: 2
+  hitParticle: {fileID: 8085730185793315215, guid: 88989d38689ef844ab17ea22444a5602,
+    type: 3}
+  hitSoundName: 
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 65792

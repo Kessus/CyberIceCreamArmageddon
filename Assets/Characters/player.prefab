@@ -252,27 +252,27 @@ PrefabInstance:
     - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.009089079
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999587
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.042
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
@@ -404,6 +404,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590534656493050580, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590534656493050580, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156422313958137133, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156422313958137133, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.y
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6810998599505285735, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}

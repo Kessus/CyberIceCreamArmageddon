@@ -21,6 +21,10 @@ public class BallisticProjectile : Projectile
                 }
             }
             hasDealtDamage = true;
+            if(hitParticle != null)
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
         }
     }

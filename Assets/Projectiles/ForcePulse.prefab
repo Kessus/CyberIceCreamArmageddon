@@ -1,16 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2030643015957767170
+--- !u!95 &1546598451
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057593737918254266}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c2cf40dc0e8caa4e8ce20c048584f63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3602440598589474064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057593737918254266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9629f629526a7b640b1c311ed2404089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  rb: {fileID: 5173622556106323660}
+  damageAmount: 8
+  timeToLive: 0.2
+  speedVariation: 0
+  hitParticle: {fileID: 0}
+  hitSoundName: 
+  ignoredLayers:
+    serializedVersion: 2
+    m_Bits: 67840
+  pierceCount: 20
+--- !u!1001 &5056108120646360510
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3236461819172296019, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f25acb7f58bd1048a4daaa5791534f7,
+        type: 3}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.31818175
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
@@ -20,17 +73,17 @@ PrefabInstance:
     - target: {fileID: 2827197524652237689, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.030148
+      value: 48.74
       objectReference: {fileID: 0}
     - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.017091
+      value: 38.67
       objectReference: {fileID: 0}
     - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
@@ -77,26 +130,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339061709590864673, guid: 0564fb2ec958104498fe09327695fe25,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
       propertyPath: m_Name
-      value: RifleProjectile
+      value: ForcePulse
       objectReference: {fileID: 0}
     - target: {fileID: 7447601843724529967, guid: 0564fb2ec958104498fe09327695fe25,
         type: 3}
-      propertyPath: speed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 7447601843724529967, guid: 0564fb2ec958104498fe09327695fe25,
-        type: 3}
-      propertyPath: damageAmount
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7447601843724529967, guid: 0564fb2ec958104498fe09327695fe25,
-        type: 3}
-      propertyPath: speedVariation
-      value: 1
+      propertyPath: timeToLive
+      value: 0.15
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6026414085904694680, guid: 0564fb2ec958104498fe09327695fe25, type: 3}
+    - {fileID: 7447601843724529967, guid: 0564fb2ec958104498fe09327695fe25, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0564fb2ec958104498fe09327695fe25, type: 3}
+--- !u!1 &2057593737918254266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6531606040448307460, guid: 0564fb2ec958104498fe09327695fe25,
+    type: 3}
+  m_PrefabInstance: {fileID: 5056108120646360510}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &5173622556106323660 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: -9086432528491713678, guid: 0564fb2ec958104498fe09327695fe25,
+    type: 3}
+  m_PrefabInstance: {fileID: 5056108120646360510}
+  m_PrefabAsset: {fileID: 0}

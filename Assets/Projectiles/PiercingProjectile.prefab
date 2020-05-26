@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9629f629526a7b640b1c311ed2404089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 25
   rb: {fileID: 3973352501076448245}
   damageAmount: 15
   timeToLive: 7
   speedVariation: 0
+  hitParticle: {fileID: 0}
+  hitSoundName: 
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 65792

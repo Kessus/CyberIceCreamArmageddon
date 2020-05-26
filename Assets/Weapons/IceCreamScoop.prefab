@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &218426407405485402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7817201436591481993}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7817201436591481993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218426407405485402}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.311, y: 0.047, z: -0.034898613}
+  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6334416251805095169}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6334416251805095168
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,8 +40,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6334416251805095169}
   - component: {fileID: 6334416251805095171}
-  - component: {fileID: 6334416251805095170}
   - component: {fileID: 6334416251805095180}
+  - component: {fileID: 814265611450538905}
   m_Layer: 0
   m_Name: IceCreamScoop
   m_TagString: Untagged
@@ -29,7 +59,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.95, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 7817201436591481993}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,28 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c067d8f79f68baf47984200ebadd6e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponBehaviour: {fileID: 6334416251805095170}
+  weaponBehaviour: {fileID: 814265611450538905}
   triggerKey: Fire2
   isAutomatic: 0
-  cooldownDuration: 0.25
+  cooldownDuration: 0.5
   visibilityTime: 0.3
   weaponIcon: {fileID: 21300000, guid: 8eb88781fee1a3640af93959a4686653, type: 3}
   reactToButtons: 0
---- !u!114 &6334416251805095170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334416251805095168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7abdc42ee20ee4c99b1ba497c9c467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitboxSize: {x: 0.6, y: 1.4}
-  hitDelay: 0
-  damageAmount: 40
 --- !u!212 &6334416251805095180
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -106,7 +122,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: d80024f2749990241a249510a98d17d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c548af26112adc4597e859717d89b63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,3 +133,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &814265611450538905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334416251805095168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56623074a710f843bb07d5d42d1a1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileType: {fileID: 2057593737918254266, guid: a76f43940fe67dd429e6d3a205e1174d,
+    type: 3}
+  originPoint: {fileID: 7817201436591481993}

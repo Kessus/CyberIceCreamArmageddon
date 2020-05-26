@@ -55,9 +55,7 @@ public class Damage : MonoBehaviour
         }
     }
 
-
-
-    public void ReceiveDamage(int damage)
+    public void ReceiveDamage(int damage, bool isFromFatigue = false)
     {
         if (Player.playerObject.GetComponent<Player>().isDead)
             return;
@@ -109,8 +107,8 @@ public class Damage : MonoBehaviour
                 }
             }
         }
-        if (damageParticleSystem != null)
-            damageParticleSystem.Play();
+        if (damageParticleSystem != null && !isFromFatigue)
+            Instantiate(damageParticleSystem, transform.position, Quaternion.identity);
         AudioManager.Manager.PlaySound(damageSoundName);
     }
 
@@ -131,9 +129,9 @@ public class Damage : MonoBehaviour
             return;
 
         if(bodyHealth > 0)
-            ReceiveDamage(Mathf.RoundToInt(bodyFatigueDamagePercent * maxBodyHealth));
+            ReceiveDamage(Mathf.RoundToInt(bodyFatigueDamagePercent * maxBodyHealth), true);
         else
-            ReceiveDamage(Mathf.RoundToInt(goggleFatigueDamagePercent * maxGoggleHealth));
+            ReceiveDamage(Mathf.RoundToInt(goggleFatigueDamagePercent * maxGoggleHealth), true);
     }
 
     public void Die()
@@ -149,6 +147,7 @@ public class Damage : MonoBehaviour
         else
         {
             healthBarScript.gameObject.SetActive(false);
+            GetComponent<Enemy>().enabled = false;
             StartCoroutine("DestroyBody");
         }
     }

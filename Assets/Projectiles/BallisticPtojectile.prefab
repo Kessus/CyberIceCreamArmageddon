@@ -17,6 +17,9 @@ MonoBehaviour:
   damageAmount: 25
   timeToLive: 4
   speedVariation: 0
+  hitParticle: {fileID: 4504038872704416817, guid: e1f9217b64b905e4c81cb85c8b8bbbe6,
+    type: 3}
+  hitSoundName: 
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 78080

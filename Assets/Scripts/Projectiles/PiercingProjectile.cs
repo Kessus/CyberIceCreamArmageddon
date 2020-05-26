@@ -16,7 +16,11 @@ public class PiercingProjectile : Projectile
                     damageScript.ReceiveDamage(damageAmount);
             }
             pierceCount--;
-            if(pierceCount <= 0)
+            if(hitParticle != null)
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+            }
+            if (pierceCount <= 0)
             {
                 hasDealtDamage = true;
                 Destroy(gameObject);

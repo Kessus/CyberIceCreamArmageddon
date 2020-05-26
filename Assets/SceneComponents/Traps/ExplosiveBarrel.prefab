@@ -55,7 +55,8 @@ MonoBehaviour:
   enemyReceivedDamageMultiplier: 5
   healthBarScript: {fileID: 0}
   goggleHealthBarScript: {fileID: 0}
-  damageParticleSystem: {fileID: 0}
+  damageParticleSystem: {fileID: 1412046570132086966, guid: 38cfd1788cbaf744483a9aecd3467a27,
+    type: 3}
   deathParticleSystem: {fileID: 0}
   damageSoundName: 
   deathSoundName: 

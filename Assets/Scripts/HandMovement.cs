@@ -5,6 +5,7 @@ using UnityEngine;
 public class HandMovement : MonoBehaviour
 {
     public bool aimTowardsPlayer = true;
+    public Vector2 rotationRange = new Vector2(-90.0f, 90.0f);
 
     // Update is called once per frame
     void Update()
@@ -27,6 +28,7 @@ public class HandMovement : MonoBehaviour
         float resultZRotation = Mathf.Acos(Vector3.Dot(transform.parent.transform.right, lookDirection)) * Mathf.Rad2Deg;
         if (targetPosition.y < transform.position.y)
             resultZRotation *= -1;
+        resultZRotation = Mathf.Clamp(resultZRotation, rotationRange.x, rotationRange.y);
         transform.localRotation = Quaternion.Euler(0.0f, 0.0f, resultZRotation);
     }
 }
