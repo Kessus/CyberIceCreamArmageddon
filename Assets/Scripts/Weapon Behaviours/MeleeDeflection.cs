@@ -6,9 +6,30 @@ public class MeleeDeflection : WeaponBehaviour
 {
     public Vector2 hitboxSize = new Vector2(1.0f, 1.0f);
     public float hitDelay = 0.0f;
+    public SpriteRenderer deflectorGun;
+    private SpriteRenderer deflectorField;
     public override void Execute()
     {
         StartCoroutine(SwingWeapon());
+    }
+
+    private void Start()
+    {
+        deflectorField = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if (deflectorField.enabled)
+        {
+            if (!deflectorGun.enabled)
+                deflectorGun.enabled = true;
+        }
+        else
+        {
+            if (deflectorGun.enabled)
+                deflectorGun.enabled = false;
+        }
     }
 
     private IEnumerator SwingWeapon()
