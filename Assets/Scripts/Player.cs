@@ -132,7 +132,8 @@ public class Player : MonoBehaviour
 
             hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
             hijackTarget.GetComponentInChildren<FaceSwap>().SwapFace(GetComponentInChildren<FaceSwap>());
-            hijackTarget.AddComponent<Player>();
+            Player playerScript = hijackTarget.AddComponent<Player>();
+            playerScript.hijackParticleSystem = hijackParticleSystem;
 
             Destroy(gameObject);
         }
