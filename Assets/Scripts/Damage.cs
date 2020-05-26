@@ -14,10 +14,11 @@ public class Damage : MonoBehaviour
     public HealthBarBody healthBarScript;
     public HealthBarBody goggleHealthBarScript;
     public ParticleSystem damageParticleSystem;
-    //public ParticleSystem deathParticleSystem;
     public string damageSoundName;
     public string deathSoundName;
     public bool destroyInstantlyOnDeath = false;
+    [HideInInspector]
+    public bool canBeDamaged = true;
 
     [HideInInspector]
     public bool IsPlayer {
@@ -57,7 +58,7 @@ public class Damage : MonoBehaviour
 
     public void ReceiveDamage(int damage, bool isFromFatigue = false)
     {
-        if (Player.playerObject.GetComponent<Player>().isDead)
+        if (Player.playerObject.GetComponent<Player>().isDead || !canBeDamaged)
             return;
 
         if (!isPlayer)

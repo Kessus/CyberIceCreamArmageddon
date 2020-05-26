@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: 3dd50063c88a1534a8cb3c1d167e8d2c
+  - enabled: 1
+    path: Assets/Scenes/Final/City.unity
+    guid: 96aea070c1265ec4186771972b933d5e
+  - enabled: 1
+    path: Assets/Scenes/Final/Lab.unity
+    guid: 88c2e0610a9fa78419da233da2c05e5f
   m_configObjects: {}

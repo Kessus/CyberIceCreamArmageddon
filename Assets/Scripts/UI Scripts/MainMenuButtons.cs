@@ -7,7 +7,7 @@ public class MainMenuButtons : MonoBehaviour
 {
     public GameObject creditsText = null;
 
-    public void StartNewGame() => SceneManager.LoadScene("Tutorial");
+    public void StartNewGame() => SceneManager.LoadScene("Lab");
     public void LoadGame() => SaveManager.LoadGame();
     public void ShowCredits() => creditsText.GetComponent<Credits>().ShowCredits();
     public void ExitGame() => Application.Quit();

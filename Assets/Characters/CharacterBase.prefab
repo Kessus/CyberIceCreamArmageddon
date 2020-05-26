@@ -375,10 +375,10 @@ MonoBehaviour:
   goggleHealthBarScript: {fileID: 0}
   damageParticleSystem: {fileID: 6015087588396338335, guid: 1aa3405989a20e741b7511ed09e277f9,
     type: 3}
-  deathParticleSystem: {fileID: 0}
   damageSoundName: 
   deathSoundName: 
   destroyInstantlyOnDeath: 0
+  canBeDamaged: 1
   bodyHealth: 100
   goggleHealth: 100
 --- !u!95 &3679584592111910166

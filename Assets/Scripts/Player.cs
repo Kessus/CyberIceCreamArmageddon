@@ -119,15 +119,15 @@ public class Player : MonoBehaviour
     private void TryHijack()
     {
         List<RaycastHit2D> hitTargets = new List<RaycastHit2D>(Physics2D.BoxCastAll(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, new Vector2(), 0.0f, LayerMask.GetMask("Enemy")));
-        RaycastHit2D hitResult = hitTargets.FirstOrDefault(c => !c.collider.gameObject.GetComponent<Enemy>().isDead);
-        if (hitResult.collider == null)
+        RaycastHit2D hitResult = hitTargets.FirstOrDefault(c => (!c.collider.gameObject.GetComponent<Enemy>()?.isDead) ?? false);
+        if (!hitResult || hitResult.collider == null)
             return;
         GameObject hijackTarget = hitResult.collider.gameObject;
 
         if (hijackTarget.GetComponent<Enemy>().CanBeHijacked)
         {
             if (hijackParticleSystem != null)
-                hijackParticleSystem.Play();
+                Instantiate(hijackParticleSystem, transform.position, Quaternion.identity);
             AudioManager.Manager.PlaySound(hijackSoundName);
 
             hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
