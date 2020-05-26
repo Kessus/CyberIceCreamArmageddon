@@ -22,5 +22,6 @@ public class BouncePad : MonoBehaviour
         Vector2 resultForce = transform.up * bounceForce;
         otherRigidBody.velocity = new Vector2(otherRigidBody.velocity.x, 0.0f);
         otherRigidBody.AddForce(resultForce, ForceMode2D.Impulse);
+        otherRigidBody.gameObject.GetComponent<Animator>().SetBool("IsInAir", true);
     }
 }

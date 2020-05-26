@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 18
+  bounceParticleSystem: {fileID: 8085730185793315215, guid: 88989d38689ef844ab17ea22444a5602,
+    type: 3}
+  bounceSoundName: 
 --- !u!61 &181906900328792928
 BoxCollider2D:
   m_ObjectHideFlags: 0

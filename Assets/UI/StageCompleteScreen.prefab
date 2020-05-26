@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36ffe73a88a74141938ea5caaacfb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextStageName: MainMenu
+  nextStageName: EndGame
   timeText: {fileID: 475257735349318862}
   enemiesKilledText: {fileID: 1292355365203681842}
   damageTakenText: {fileID: 5715260730164912276}

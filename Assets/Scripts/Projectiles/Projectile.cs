@@ -20,11 +20,12 @@ public class Projectile : MonoBehaviour
     protected float remainingLifeTime;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         rb.velocity = transform.right * (speed + Random.Range(-speedVariation, speedVariation));
         remainingLifeTime = timeToLive;
+        if (hitParticle != null)
+            hitParticle.Stop();
     }
 
     private void Update()
@@ -97,7 +98,9 @@ public class Projectile : MonoBehaviour
                 bossDamageScript.ReceiveDamage(damageAmount);
 
             if (hitParticle != null)
-                hitParticle.Play();
+            {
+                Instantiate(hitParticle, transform.position, Quaternion.identity);
+            }
             AudioManager.Manager.PlaySound(hitSoundName);
             hasDealtDamage = true;
             Destroy(gameObject);

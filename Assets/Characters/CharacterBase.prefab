@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTowardsPlayer: 0
+  rotationRange: {x: -90, y: 90}
 --- !u!1 &2321650037333553707
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +373,8 @@ MonoBehaviour:
   enemyReceivedDamageMultiplier: 5
   healthBarScript: {fileID: 0}
   goggleHealthBarScript: {fileID: 0}
-  damageParticleSystem: {fileID: 0}
+  damageParticleSystem: {fileID: 6015087588396338335, guid: 1aa3405989a20e741b7511ed09e277f9,
+    type: 3}
   deathParticleSystem: {fileID: 0}
   damageSoundName: 
   deathSoundName: 
@@ -444,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTowardsPlayer: 1
+  rotationRange: {x: -15, y: 60}
 --- !u!114 &7323266550635066657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimTowardsPlayer: 0
+  rotationRange: {x: -90, y: 90}
 --- !u!1 &6487633966060022946
 GameObject:
   m_ObjectHideFlags: 0

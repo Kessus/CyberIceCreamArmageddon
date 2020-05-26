@@ -41,9 +41,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  nextWaypointDistance: 3
   playerShootDistance: 8
+  runAwayDistance: 0
   healthBar: {fileID: 6001154549307721337}
+  isDead: 0
+  shouldRunAway: 0
 --- !u!1001 &2598307275597695879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,6 +72,11 @@ PrefabInstance:
         type: 3}
       propertyPath: groundCheckLayers.m_Bits
       value: 35072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034628813435918276, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3472344513789823372, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
@@ -161,15 +168,40 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5393307094557959224, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5590534656493050580, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: aimTowardsPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590534656493050580, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5590534656493050580, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156422313958137133, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
       propertyPath: aimTowardsPlayer
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6156422313958137133, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}
-      propertyPath: aimTowardsPlayer
-      value: 1
+      propertyPath: rotationRange.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156422313958137133, guid: 771548520684abb4b931622f0dd4cf42,
+        type: 3}
+      propertyPath: rotationRange.y
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8368740512655937203, guid: 771548520684abb4b931622f0dd4cf42,
         type: 3}

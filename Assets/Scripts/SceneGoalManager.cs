@@ -18,8 +18,8 @@ public class SceneGoalManager : MonoBehaviour
 
     private CameraFollow cameraScript;
     public bool StageComplete { get; private set; } = false;
-    
-    public SceneGoalManager()
+
+    private void Awake()
     {
         goalManager = this;
     }
@@ -27,6 +27,9 @@ public class SceneGoalManager : MonoBehaviour
     {
         cameraScript = Camera.main.GetComponent<CameraFollow>();
         CurrentStageIndex = 0;
+        RemainingEnemies = stageEnemyCountGoals[0];
+        StageComplete = false;
+        StageDuration = 0.0f;
         OnStageAdvance?.Invoke(CurrentStageIndex);
         BeginNewStage();
     }
