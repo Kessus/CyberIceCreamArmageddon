@@ -14,7 +14,7 @@ public class Damage : MonoBehaviour
     public HealthBarBody healthBarScript;
     public HealthBarBody goggleHealthBarScript;
     public ParticleSystem damageParticleSystem;
-    public ParticleSystem deathParticleSystem;
+    //public ParticleSystem deathParticleSystem;
     public string damageSoundName;
     public string deathSoundName;
     public bool destroyInstantlyOnDeath = false;
@@ -136,8 +136,8 @@ public class Damage : MonoBehaviour
 
     public void Die()
     {
-        if (deathParticleSystem != null)
-            deathParticleSystem.Play();
+        //if (deathParticleSystem != null)
+        //    deathParticleSystem.Play();
         AudioManager.Manager.PlaySound(deathSoundName);
 
         if (isPlayer)
