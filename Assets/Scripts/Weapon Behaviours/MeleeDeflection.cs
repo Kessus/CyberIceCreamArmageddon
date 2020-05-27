@@ -7,6 +7,7 @@ public class MeleeDeflection : WeaponBehaviour
     public Vector2 hitboxSize = new Vector2(1.0f, 1.0f);
     public float hitDelay = 0.0f;
     public SpriteRenderer deflectorGun;
+    public string deflectionSoundName;
     private SpriteRenderer deflectorField;
     public override void Execute()
     {
@@ -55,6 +56,8 @@ public class MeleeDeflection : WeaponBehaviour
                 projectileScript.DeflectProjectile(gameObject);
             }
         }
+
+        AudioManager.Manager.PlaySound(deflectionSoundName);
     }
 
     private void OnDrawGizmosSelected()

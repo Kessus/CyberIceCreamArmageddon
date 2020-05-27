@@ -10,6 +10,10 @@ public class PiercingProjectile : Projectile
 
     protected override void OnHit(Collider2D hitInfo)
     {
+        //Projectiles don't react to dead enemies
+        if (hitInfo.gameObject.GetComponent<Enemy>()?.isDead ?? false)
+            return;
+
         //Check if the target's layer isn't ignored by the projectile and that the projectile hasn't already dealt damage to another enemy
         if ((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
         {
@@ -23,6 +27,9 @@ public class PiercingProjectile : Projectile
             {
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
+
+            AudioManager.Manager.PlaySound(hitSoundName);
+
             if (pierceCount <= 0)
             {
                 hasDealtDamage = true;

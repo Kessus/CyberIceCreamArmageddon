@@ -57,10 +57,10 @@ MonoBehaviour:
   goggleHealthBarScript: {fileID: 0}
   damageParticleSystem: {fileID: 1412046570132086966, guid: 38cfd1788cbaf744483a9aecd3467a27,
     type: 3}
-  deathParticleSystem: {fileID: 0}
   damageSoundName: 
   deathSoundName: 
   destroyInstantlyOnDeath: 1
+  canBeDamaged: 1
   bodyHealth: 1
   goggleHealth: 0
 --- !u!114 &3674777258279373799
@@ -78,7 +78,7 @@ MonoBehaviour:
   blastDamage: 100
   blastRadius: 3.5
   shouldDrawRadius: 1
-  explosionSoundName: 
+  explosionSoundName: Barrel
   explosionParticleSystem: {fileID: 0}
 --- !u!212 &4167522492887286808
 SpriteRenderer:

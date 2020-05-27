@@ -140,6 +140,7 @@ MonoBehaviour:
   speedVariation: 2
   hitParticle: {fileID: 8085730185793315215, guid: 88989d38689ef844ab17ea22444a5602,
     type: 3}
+  shotSoundName: Shotgun
   hitSoundName: 
   ignoredLayers:
     serializedVersion: 2

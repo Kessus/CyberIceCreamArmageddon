@@ -16,7 +16,7 @@ MonoBehaviour:
   isDead: 0
   hijackParticleSystem: {fileID: 6879129195854891997, guid: c315080d19387874e836f57ed26d5e37,
     type: 3}
-  hijackSoundName: 
+  hijackSoundName: Hijack
   damageDealt: 0
   damageReceived: 0
 --- !u!1001 &773475484550827002

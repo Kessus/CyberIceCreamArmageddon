@@ -6772,7 +6772,126 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87296eecba75b3346bf984101b81f2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableSounds: []
+  availableSounds:
+  - clipName: CityMusic
+    clip: {fileID: 8300000, guid: 2fa27a82a11bd9b46a41e345835326b6, type: 3}
+    volume: 0.5
+    pitch: 1
+    sources: []
+    loop: 1
+    isMusic: 1
+  - clipName: Barrel
+    clip: {fileID: 8300000, guid: 52f05fe7af7af6742a35082161eccae7, type: 3}
+    volume: 1
+    pitch: 0.7
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: BouncePad
+    clip: {fileID: 8300000, guid: 2060070e55e8f634497bb619f521e67e, type: 3}
+    volume: 0.5
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Damage
+    clip: {fileID: 8300000, guid: b716fe9389cf64a40b8a2a833321d565, type: 3}
+    volume: 0.5
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Death
+    clip: {fileID: 8300000, guid: 6314d155856b47045bc27813a5fe6c43, type: 3}
+    volume: 0.75
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: ForceCannon
+    clip: {fileID: 8300000, guid: 149b4f1943ad8294590092bdbd881a50, type: 3}
+    volume: 0.7
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Grenade
+    clip: {fileID: 8300000, guid: 493965b49f5626e4dbeb96f1535072b1, type: 3}
+    volume: 1
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: GrenadeLauncher
+    clip: {fileID: 8300000, guid: 078cbf543b40b834eabc644c7b269e65, type: 3}
+    volume: 1
+    pitch: 0.5
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Hijack
+    clip: {fileID: 8300000, guid: c07b1e648ea6d7346baee21b9db3c003, type: 3}
+    volume: 1
+    pitch: 2
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: MenuButton
+    clip: {fileID: 8300000, guid: 1c338d8f877793547a56f73baca66a50, type: 3}
+    volume: 1
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Pistol
+    clip: {fileID: 8300000, guid: deed42b8e1b62e447a9756763af38924, type: 3}
+    volume: 0.7
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Rocket
+    clip: {fileID: 8300000, guid: 85f986dfe49e2814986676c6830c84b5, type: 3}
+    volume: 1
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: RocketLauncher
+    clip: {fileID: 8300000, guid: 52cbdf66f596d394b97fd8c7a47494d4, type: 3}
+    volume: 1
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Shotgun
+    clip: {fileID: 8300000, guid: 0ac7ef88fc1dd7d419883c5b811ce26e, type: 3}
+    volume: 0.25
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: SniperRifle
+    clip: {fileID: 8300000, guid: 4a9e7a0000ee981499bd7ebf7ff1be80, type: 3}
+    volume: 0.7
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: Spikes
+    clip: {fileID: 8300000, guid: b0a1df8624797314586126e4391889d5, type: 3}
+    volume: 0.6
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
+  - clipName: ProjectileDeflector
+    clip: {fileID: 8300000, guid: 35509242a2399bb4fb737629b747a541, type: 3}
+    volume: 0.7
+    pitch: 1
+    sources: []
+    loop: 0
+    isMusic: 0
 --- !u!1001 &1602868481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9152,7 +9271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64c4ee2d6dbbfc47a41543a273731dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusicClipName: 
+  sceneMusicClipName: CityMusic
 --- !u!1001 &2072940366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9996,6 +10115,16 @@ PrefabInstance:
       propertyPath: goggleHealthBarScript
       value: 
       objectReference: {fileID: 1636572831}
+    - target: {fileID: 1145564325203579033, guid: 889c37deb1b38a345b5a88897f45e328,
+        type: 3}
+      propertyPath: goggleFatigueDamagePercent
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1145564325203579033, guid: 889c37deb1b38a345b5a88897f45e328,
+        type: 3}
+      propertyPath: bodyFatigueDamagePercent
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4019349909127390550, guid: 889c37deb1b38a345b5a88897f45e328,
         type: 3}
       propertyPath: m_Enabled

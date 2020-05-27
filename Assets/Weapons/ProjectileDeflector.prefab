@@ -201,6 +201,7 @@ MonoBehaviour:
   hitboxSize: {x: 0.94, y: 1.8}
   hitDelay: 0
   deflectorGun: {fileID: 1733797335231483177}
+  deflectionSoundName: ProjectileDeflector
 --- !u!95 &1138486658135610251
 Animator:
   serializedVersion: 3

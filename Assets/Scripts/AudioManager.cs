@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//Data for registering sound clips in the AudioManager
 [System.Serializable]
 public class SoundInstance
 {
@@ -17,6 +18,8 @@ public class SoundInstance
     public bool loop;
     public bool isMusic;
 }
+
+//Used for handling all of the game's audio
 public class AudioManager : MonoBehaviour
 {
     public List<SoundInstance> availableSounds;
@@ -24,13 +27,6 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Manager != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DontDestroyOnLoad(gameObject);
         Manager = this;
 
         foreach(SoundInstance sound in availableSounds)
@@ -39,6 +35,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    //Creates a new AudioSource based on the SoundInstance data
     private AudioSource AddAudioSourceToSoundInstance(SoundInstance sound)
     {
         AudioSource addedSource = gameObject.AddComponent<AudioSource>();
@@ -51,6 +48,8 @@ public class AudioManager : MonoBehaviour
         return addedSource;
     }
 
+    //Plays a sound registered with a specified name
+    //Returns the AudioSource's index to allow stopping the sound
     public int PlaySound(string soundName)
     {
         SoundInstance sound = availableSounds.FirstOrDefault(s => s.clipName == soundName);
@@ -74,12 +73,15 @@ public class AudioManager : MonoBehaviour
         }
 
         AudioSource sourceToPlay = sound.sources.FirstOrDefault(s => !s.isPlaying);
+        //Since a clip cannot be played multiple times at once from one AudioSource, a pool of required components is created here when needed
         if (sourceToPlay == null)
             sourceToPlay = AddAudioSourceToSoundInstance(sound);
         sourceToPlay.Play();
         return sound.sources.IndexOf(sourceToPlay);
     }
 
+    //Stops the sound with a specified name at a given index
+    //If no index is given, stops the first available
     public void StopSound(string soundName, int sourceIndex = 0)
     {
         SoundInstance sound = availableSounds.FirstOrDefault(s => s.clipName == soundName);

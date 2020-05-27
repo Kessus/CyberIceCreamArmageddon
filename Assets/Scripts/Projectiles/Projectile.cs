@@ -20,12 +20,14 @@ public class Projectile : MonoBehaviour
     protected bool collisionLayersInitialized = false;
     protected bool hasDealtDamage = false;
     protected float remainingLifeTime;
+    protected int shotSoundIndex;
 
     //Sets initial projectile velocity and its life timer
     void Start()
     {
         rb.velocity = transform.right * (speed + Random.Range(-speedVariation, speedVariation));
         remainingLifeTime = timeToLive;
+        shotSoundIndex = AudioManager.Manager.PlaySound(shotSoundName);
     }
 
     private void Update()
@@ -108,6 +110,7 @@ public class Projectile : MonoBehaviour
             {
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
+
             AudioManager.Manager.PlaySound(hitSoundName);
 
             hasDealtDamage = true;

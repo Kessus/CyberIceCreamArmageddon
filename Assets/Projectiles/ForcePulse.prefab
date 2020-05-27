@@ -37,6 +37,7 @@ MonoBehaviour:
   timeToLive: 0.2
   speedVariation: 0
   hitParticle: {fileID: 0}
+  shotSoundName: ForceCannon
   hitSoundName: 
   ignoredLayers:
     serializedVersion: 2

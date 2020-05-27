@@ -144,6 +144,7 @@ public class Player : MonoBehaviour
             hijackTarget.GetComponentInChildren<FaceSwap>().SwapFace(GetComponentInChildren<FaceSwap>());
             Player playerScript = hijackTarget.AddComponent<Player>();
             playerScript.hijackParticleSystem = hijackParticleSystem;
+            playerScript.hijackSoundName = hijackSoundName;
 
             Destroy(gameObject);
         }

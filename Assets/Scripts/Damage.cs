@@ -91,6 +91,8 @@ public class Damage : MonoBehaviour
         }
         else
         {
+            damage = Mathf.FloorToInt(damage * 0.3f);
+
             Player.playerObject.GetComponent<Player>().damageReceived += damage;
             bodyHealth -= damage;
             int damageLeft = -bodyHealth;
@@ -109,8 +111,10 @@ public class Damage : MonoBehaviour
             }
         }
         if (damageParticleSystem != null && !isFromFatigue)
+        {
             Instantiate(damageParticleSystem, transform.position, Quaternion.identity);
-        AudioManager.Manager.PlaySound(damageSoundName);
+            AudioManager.Manager.PlaySound(damageSoundName);
+        }
     }
 
     public void RegisterAssimilation(Damage damageScript)
@@ -137,10 +141,6 @@ public class Damage : MonoBehaviour
 
     public void Die()
     {
-        //if (deathParticleSystem != null)
-        //    deathParticleSystem.Play();
-        AudioManager.Manager.PlaySound(deathSoundName);
-
         if (isPlayer)
         {
             DeathScreen.deathScreen.gameObject.SetActive(true);
@@ -151,6 +151,11 @@ public class Damage : MonoBehaviour
             GetComponent<Enemy>().enabled = false;
             StartCoroutine("DestroyBody");
         }
+    }
+
+    public void PlayDeathSound()
+    {
+        AudioManager.Manager.PlaySound(deathSoundName);
     }
 
     public IEnumerator DestroyBody()

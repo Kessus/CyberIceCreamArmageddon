@@ -19,7 +19,8 @@ MonoBehaviour:
   speedVariation: 0
   hitParticle: {fileID: 7365263061287618055, guid: 6f374ee1c2cacb544b0bd6665edd19b1,
     type: 3}
-  hitSoundName: 
+  shotSoundName: RocketLauncher
+  hitSoundName: Rocket
   ignoredLayers:
     serializedVersion: 2
     m_Bits: 78080

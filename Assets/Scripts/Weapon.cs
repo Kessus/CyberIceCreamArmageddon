@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//A base class for each weapon
+//Handles basic weapon logic and carries its data
+//A weapon's effect is determined by the associated WeaponBehaviour script
 public class Weapon : MonoBehaviour
 {
     public WeaponBehaviour weaponBehaviour;
@@ -14,8 +17,9 @@ public class Weapon : MonoBehaviour
     [HideInInspector]
     public bool reactToButtons = false;
 
-    
+    //Makes sure that the weapon doesn't dissapear between shots
     private int visibilityChangeCounter = 0;
+    
     private List<SpriteRenderer> sprites;
     private bool usedWeapon = false;
     private Animator animator;
@@ -32,6 +36,7 @@ public class Weapon : MonoBehaviour
         if (InGameUi.IsGamePaused)
             return;
 
+        //Instantly hide hands and weapons when an enemy dies
         if (!ownerDead && (GetComponentInParent<Enemy>()?.isDead ?? false))
         {
             foreach (SpriteRenderer sprite in sprites)
@@ -39,6 +44,7 @@ public class Weapon : MonoBehaviour
             ownerDead = true;
         }
 
+        //Handles shooting logic
         if (!usedWeapon || isAutomatic)
         {
             if (Input.GetButton(triggerKey) && !IsOnCooldown && reactToButtons)
@@ -61,6 +67,7 @@ public class Weapon : MonoBehaviour
         HandleAnimations();
     }
 
+    //Puts the weapon on cooldown and triggers UI cooldown logic if used by a player character
     private IEnumerator HandleCooldown()
     {
         IsOnCooldown = true;
@@ -72,6 +79,7 @@ public class Weapon : MonoBehaviour
         IsOnCooldown = false;
     }
 
+    //Shows and hides associated sprites
     private IEnumerator HandleVisibility()
     {
         foreach (SpriteRenderer sprite in sprites)

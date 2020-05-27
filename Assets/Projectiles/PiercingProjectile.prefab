@@ -18,6 +18,7 @@ MonoBehaviour:
   timeToLive: 7
   speedVariation: 0
   hitParticle: {fileID: 0}
+  shotSoundName: SniperRifle
   hitSoundName: 
   ignoredLayers:
     serializedVersion: 2
