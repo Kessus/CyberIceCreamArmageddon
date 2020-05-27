@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Not used in the game
 public class BossMove : StateMachineBehaviour
 {
     public float distanceThreshold = 0.1f;
     private Transform destination;
     private BossBehaviour bossBehaviour;
     private Rigidbody2D rigidBody;
-    //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         bossBehaviour = animator.gameObject.GetComponent<BossBehaviour>();
@@ -20,7 +22,6 @@ public class BossMove : StateMachineBehaviour
             animator.gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
     }
 
-    //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Vector2 newPosition = Vector2.MoveTowards(animator.gameObject.transform.position, destination.position, bossBehaviour.movementSpeed * Time.fixedDeltaTime);

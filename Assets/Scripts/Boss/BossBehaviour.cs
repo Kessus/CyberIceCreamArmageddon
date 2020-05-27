@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//Not used in the game
 public class BossBehaviour : MonoBehaviour
 {
     public Transform CurrentMoveDestination { get; private set; }

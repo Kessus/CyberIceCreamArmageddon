@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Not used in the game
 public class BossDamage : MonoBehaviour
 {
     public bool isDefending = false;

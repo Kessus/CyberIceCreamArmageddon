@@ -13,8 +13,9 @@ public class SoundInstance
     [Range(0.1f, 2.0f)]
     public float pitch = 1.0f;
     [HideInInspector]
-    public AudioSource source;
+    public List<AudioSource> sources;
     public bool loop;
+    public bool isMusic;
 }
 public class AudioManager : MonoBehaviour
 {
@@ -34,35 +35,61 @@ public class AudioManager : MonoBehaviour
 
         foreach(SoundInstance sound in availableSounds)
         {
-            sound.source = gameObject.AddComponent<AudioSource>();
-            sound.source.clip = sound.clip;
-            sound.source.volume = sound.volume;
-            sound.source.pitch = sound.pitch;
-            sound.source.loop = sound.loop;
+            AddAudioSourceToSoundInstance(sound);
         }
     }
 
-    public void PlaySound(string soundName)
+    private AudioSource AddAudioSourceToSoundInstance(SoundInstance sound)
+    {
+        AudioSource addedSource = gameObject.AddComponent<AudioSource>();
+        sound.sources.Add(addedSource);
+        addedSource.clip = sound.clip;
+        addedSource.volume = sound.volume;
+        addedSource.pitch = sound.pitch;
+        addedSource.loop = sound.loop;
+
+        return addedSource;
+    }
+
+    public int PlaySound(string soundName)
     {
         SoundInstance sound = availableSounds.FirstOrDefault(s => s.clipName == soundName);
         if(sound == null)
         {
             Debug.LogWarning("Audio Manager doesn't contain sound with name: "+soundName);
-            return;
+            return -1;
         }
 
-        sound.source.Play();
+        //There can only be one music clip active at a given time
+        if (sound.isMusic)
+        {
+            List<SoundInstance> musicSoundInstances = availableSounds.Where(s => s.isMusic).ToList();
+            foreach(SoundInstance music in musicSoundInstances)
+            {
+                for (int i = 0; i < music.sources.Count; i++)
+                {
+                    StopSound(music.clipName, i);
+                }
+            }
+        }
+
+        AudioSource sourceToPlay = sound.sources.FirstOrDefault(s => !s.isPlaying);
+        if (sourceToPlay == null)
+            sourceToPlay = AddAudioSourceToSoundInstance(sound);
+        sourceToPlay.Play();
+        return sound.sources.IndexOf(sourceToPlay);
     }
 
-    public void StopSound(string soundName)
+    public void StopSound(string soundName, int sourceIndex = 0)
     {
         SoundInstance sound = availableSounds.FirstOrDefault(s => s.clipName == soundName);
-        if (sound == null)
+        AudioSource sourceToStop = sound?.sources[sourceIndex];
+
+        if (sound == null || sourceToStop == null)
         {
             Debug.LogWarning("Audio Manager doesn't contain sound with name: " + soundName);
             return;
         }
-
-        sound.source.Stop();
+        sourceToStop.Stop();
     }
 }

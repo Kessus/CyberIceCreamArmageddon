@@ -11,7 +11,9 @@ public class Projectile : MonoBehaviour
     public float timeToLive = 4.0f;
     public float speedVariation = 0.0f;
     public ParticleSystem hitParticle;
+    public string shotSoundName;
     public string hitSoundName;
+    
 
     [SerializeField]
     protected LayerMask ignoredLayers = new LayerMask();
@@ -19,13 +21,11 @@ public class Projectile : MonoBehaviour
     protected bool hasDealtDamage = false;
     protected float remainingLifeTime;
 
-
+    //Sets initial projectile velocity and its life timer
     void Start()
     {
         rb.velocity = transform.right * (speed + Random.Range(-speedVariation, speedVariation));
         remainingLifeTime = timeToLive;
-        if (hitParticle != null)
-            hitParticle.Stop();
     }
 
     private void Update()
@@ -35,6 +35,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
     }
 
+    //Unified method for creating projectiles that sets their data accordingly to the weapon that they were shot from
     public static GameObject CreateProjectile(GameObject projectile, GameObject weapon, Transform originPoint)
     {
         WeaponBehaviour behaviour = weapon.GetComponent<WeaponBehaviour>();
@@ -45,6 +46,8 @@ public class Projectile : MonoBehaviour
         return createdProjectile;
     }
 
+    //Used to switch between player projectile and enemy projectile logic
+    //Sets appropriate layers for collision detection
     private static void ChangeProjectileCollisionLayers(GameObject createdProjectile, GameObject instigator)
     {
         Projectile projectileScript = createdProjectile.GetComponent<Projectile>();
@@ -69,6 +72,8 @@ public class Projectile : MonoBehaviour
         projectileScript.collisionLayersInitialized = true;
     }
 
+    //Changes the projectile's properties and makes it fly towards its origin
+    //It also refreshes its time to live
     public void DeflectProjectile(GameObject instigator)
     {
         ChangeProjectileCollisionLayers(gameObject, instigator);
@@ -82,12 +87,14 @@ public class Projectile : MonoBehaviour
         OnHit(hitInfo);
     }
 
+    //Logic for handling (or ignoring) objects hit by the projectile
     protected virtual void OnHit(Collider2D hitInfo)
     {
         //Projectiles don't react to dead enemies
         if (hitInfo.gameObject.GetComponent<Enemy>()?.isDead ?? false)
             return;
 
+        //Check if the target's layer isn't ignored by the projectile and that the projectile hasn't already dealt damage to another enemy
         if ((1 << hitInfo.gameObject.layer & ~ignoredLayers) != 0 && !hasDealtDamage)
         {
             Damage damageScript = hitInfo.GetComponent<Damage>();
@@ -102,6 +109,7 @@ public class Projectile : MonoBehaviour
                 Instantiate(hitParticle, transform.position, Quaternion.identity);
             }
             AudioManager.Manager.PlaySound(hitSoundName);
+
             hasDealtDamage = true;
             Destroy(gameObject);
         }
