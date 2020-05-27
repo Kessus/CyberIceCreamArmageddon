@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Handles all of the damage logic for both players and enemies
 public class Damage : MonoBehaviour
 {
     public int maxBodyHealth = 100;
     public int maxGoggleHealth = 500;
+    public int bodyHealth = 100;
+    public int goggleHealth = 100;
+    //Fatigue is a type of periodic damage dealt to the player and can be mitigated by hijacking enemies
     public float bodyFatigueDamagePercent = 0.1f;
     public float goggleFatigueDamagePercent = 0.15f;
     public float fatigueDelay = 6.0f;
@@ -34,11 +38,9 @@ public class Damage : MonoBehaviour
         }
     }
 
-    public int bodyHealth = 100;
-    public int goggleHealth = 100;
-
     private bool isPlayer = false;
 
+    //Passing variables to healthbars (different ones for player and enemies)
     private void Start()
     {
         bodyHealth = maxBodyHealth;
@@ -70,6 +72,7 @@ public class Damage : MonoBehaviour
             //Enemies receive more damage than players
             damage = Mathf.FloorToInt(damage * enemyReceivedDamageMultiplier);
             
+            //For tracking purposes; displayed in the summary screen at the end of a level
             Player.playerObject.GetComponent<Player>().damageDealt += damage;
 
             bodyHealth -= damage;
@@ -91,14 +94,13 @@ public class Damage : MonoBehaviour
         }
         else
         {
-            damage = Mathf.FloorToInt(damage * 0.5f);
-
             Player.playerObject.GetComponent<Player>().damageReceived += damage;
             bodyHealth -= damage;
             int damageLeft = -bodyHealth;
             bodyHealth = Mathf.Clamp(bodyHealth, 0, maxBodyHealth);
             healthBarScript.SetHealth(bodyHealth);
 
+            //Player's health is first dealt to the body and then to goggles if body can't sustain all of the damage
             if(damageLeft > 0)
             {
                 goggleHealth -= damageLeft;
@@ -110,6 +112,7 @@ public class Damage : MonoBehaviour
                 }
             }
         }
+        //Fatigue doesn't have any particles or sounds
         if (damageParticleSystem != null && !isFromFatigue)
         {
             Instantiate(damageParticleSystem, transform.position, Quaternion.identity);
@@ -130,6 +133,7 @@ public class Damage : MonoBehaviour
 
     private void DealFatigueDamage()
     {
+        //Do not deal fatigue damage when a stage is complete
         if (SceneGoalManager.goalManager.StageComplete)
             return;
 

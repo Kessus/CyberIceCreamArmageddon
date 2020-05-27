@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Destroys the corresponding particle when it finishes playing
 public class ParticleAutoDestroy : MonoBehaviour
 {
     private ParticleSystem destroyedParticleSystem;
 
-    // Start is called before the first frame update
     void Start()
     {
         destroyedParticleSystem = GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!destroyedParticleSystem?.IsAlive() ?? false)

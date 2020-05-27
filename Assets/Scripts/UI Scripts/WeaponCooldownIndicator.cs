@@ -20,6 +20,7 @@ public class WeaponCooldownIndicator : MonoBehaviour
         weaponCooldowns = this;
     }
 
+    //Cooldowns reduced over time
     private void Update()
     {
         primaryWeaponCooldownTimeLeft = Mathf.Max(0, primaryWeaponCooldownTimeLeft - Time.deltaTime);
@@ -45,6 +46,7 @@ public class WeaponCooldownIndicator : MonoBehaviour
         relevantIcon.sprite = newWeapon.weaponIcon;
     }
 
+    //Visual representation of player's weapons' cooldowns
     public void ChangeWeaponCooldown(Weapon weapon, bool isOnCooldown)
     {
         if (isOnCooldown)

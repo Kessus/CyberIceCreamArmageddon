@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Contains all of the healthbar logic
+//Handles displaying changes to character's health
 public class HealthBarBody : MonoBehaviour
 {
 

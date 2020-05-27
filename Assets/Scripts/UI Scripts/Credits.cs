@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 
+//Cycles through the set names while applying a set animation to them
 public class Credits : MonoBehaviour
 {
     public List<string> names;

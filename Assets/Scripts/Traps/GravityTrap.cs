@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//Not used in the game
 public class GravityTrap : MonoBehaviour
 {
     public Vector2 effectOffset = new Vector2(0.0f, 0.0f);

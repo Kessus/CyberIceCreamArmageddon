@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//Has player-specific logic
 public class Player : MonoBehaviour
 {
     public float movementSpeed = 8.0f;
@@ -20,7 +21,6 @@ public class Player : MonoBehaviour
     private BoxCollider2D playerCollision;
     private bool isFacingLeft = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerObject = gameObject;
@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
         Assimilate();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (InGameUi.IsGamePaused || isDead)
@@ -55,6 +54,7 @@ public class Player : MonoBehaviour
         RotateTowardsMouseCursor();
     }
 
+    //Handles animations and movement
     private void FixedUpdate()
     {
         if (isDead)
@@ -99,8 +99,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    //Sets up needed data for a new player character
     private void Assimilate()
     {
+        //Changes the GameObjects' layers
         Transform[] children = gameObject.GetComponentsInChildren<Transform>(true);
         foreach(Transform child in children)
         {
@@ -115,6 +117,7 @@ public class Player : MonoBehaviour
             WeaponCooldownIndicator.weaponCooldowns.RegisterWeaponChange(weapon);
         }
 
+        //Disables the enemy-controlling script
         Enemy EnemyScript = gameObject.GetComponent<Enemy>();
         if (EnemyScript != null)
             EnemyScript.enabled = false;
@@ -126,10 +129,12 @@ public class Player : MonoBehaviour
         RotateTowardsMouseCursor();
     }
 
+    //Tries to transform any nearby enemy into a player character
     private void TryHijack()
     {
         List<RaycastHit2D> hitTargets = new List<RaycastHit2D>(Physics2D.BoxCastAll(playerCollision.bounds.center, playerCollision.bounds.size, 0.0f, new Vector2(), 0.0f, LayerMask.GetMask("Enemy")));
         RaycastHit2D hitResult = hitTargets.FirstOrDefault(c => (!c.collider.gameObject.GetComponent<Enemy>()?.isDead) ?? false);
+        //RaycastHits are filtered by the target having an Enemy script and not being marked as dead
         if (!hitResult || hitResult.collider == null)
             return;
         GameObject hijackTarget = hitResult.collider.gameObject;
@@ -140,6 +145,7 @@ public class Player : MonoBehaviour
                 Instantiate(hijackParticleSystem, transform.position + (hijackTarget.transform.position - transform.position)/2, Quaternion.identity);
             AudioManager.Manager.PlaySound(hijackSoundName);
 
+            //Setting up all of the necessary components for a to-be player character
             hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
             hijackTarget.GetComponentInChildren<FaceSwap>().SwapFace(GetComponentInChildren<FaceSwap>());
             Player playerScript = hijackTarget.AddComponent<Player>();

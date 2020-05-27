@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Deals damage and plays a sound effect when colliding with a character
 public class Spikes : MonoBehaviour
 {
     public int damageAmount = 50;

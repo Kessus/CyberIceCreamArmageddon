@@ -6866,7 +6866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83808b5aac285e84cbe8b575c27ac78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageEnemyCountGoals: 010000000300000001000000
+  stageEnemyCountGoals: 010000000800000001000000
   enemiesLeftText: {fileID: 520891858}
   stageProgressionArrow: {fileID: 80421742}
   stageCompletionScreen: {fileID: 333773332}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Handles stage progression logic
 public class SceneGoalManager : MonoBehaviour
 {
     public static SceneGoalManager goalManager;
@@ -23,6 +24,8 @@ public class SceneGoalManager : MonoBehaviour
     {
         goalManager = this;
     }
+
+    //Setting a default value on game start
     void Start()
     {
         cameraScript = Camera.main.GetComponent<CameraFollow>();

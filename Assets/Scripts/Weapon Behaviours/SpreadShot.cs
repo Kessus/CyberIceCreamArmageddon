@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Shoots multiple projectiles, each in a randomized angle within specified range
 public class SpreadShot : WeaponBehaviour
 {
     public GameObject projectileType;

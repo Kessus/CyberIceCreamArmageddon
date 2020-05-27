@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
 
+//Displayed at the end of a stage
 public class StageCompletionScreen : MonoBehaviour
 {
     public string nextStageName = "";

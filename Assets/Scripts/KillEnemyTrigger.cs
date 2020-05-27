@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Trigger used to progress a stage without the need for the player to kill anything; utility
 public class KillEnemyTrigger : MonoBehaviour
 {
     public GameObject enemyToKill;

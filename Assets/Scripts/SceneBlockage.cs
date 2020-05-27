@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Blocks a particular part of the map and unlocks once its corresponding stage begins
 public class SceneBlockage : MonoBehaviour
 {
     public int associatedStageIndex = 0;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
+//Not used in game; originally intended to refresh enemies' path periodically by rescanning the entire map but caused performance issues
 public class RescanNavMesh : MonoBehaviour
 {
     private AstarPath pathfinder;

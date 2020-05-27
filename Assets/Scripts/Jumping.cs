@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+//Handles all of the jumping and platform interaction logic
 public class Jumping : MonoBehaviour
 {
     public float jumpPower = 12.0f;
     public int jumpCount = 2;
     public float jumpCooldown = 0.0f;
 
+    //Layers that reset jump count when landed on
     [SerializeField]
     private LayerMask groundCheckLayers = new LayerMask();
 
@@ -26,7 +28,7 @@ public class Jumping : MonoBehaviour
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    // Contact with ground is checked a frame after being detected in order for velocity to normalize after landing
     void Update()
     {
         if (shouldCheckGroundContact)
@@ -47,6 +49,7 @@ public class Jumping : MonoBehaviour
         }
     }
 
+    //Cooldown is applied not to be able to jump twice within one time frame
     private IEnumerator HandleJumpCooldown()
     {
         jumpOnCooldown = true;

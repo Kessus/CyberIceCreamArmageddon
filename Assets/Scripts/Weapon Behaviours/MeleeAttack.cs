@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Not used in game
 public class MeleeAttack : WeaponBehaviour
 {
     public Vector2 hitboxSize = new Vector2(1.0f, 1.0f);

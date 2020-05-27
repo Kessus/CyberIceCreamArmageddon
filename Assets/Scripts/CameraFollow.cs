@@ -2,20 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Makes the camera follow the current player
+//Contains per-stage constraints for x position and a global constraint for min y position
 public class CameraFollow : MonoBehaviour
 {
     [Tooltip("Min and Max of camera X transform value for each stage")]
     public List<Vector2> stageXBoundaries;
     public float minYPosition;
-    /*[Tooltip("Min and Max of camera Y transform value")]
-    public List<Vector2> stageYBoundaries;*/
-
-    private Vector3 lastCameraPosition;
-
-    private void Start()
-    {
-        lastCameraPosition = transform.position;
-    }
 
     private void Update()
     {

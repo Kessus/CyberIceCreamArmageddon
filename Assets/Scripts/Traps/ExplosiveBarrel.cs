@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Upon being destroyed (by receiving damage) explodes dealing a large amount of damage in an area
 public class ExplosiveBarrel : MonoBehaviour
 {
     public int blastDamage = 100;

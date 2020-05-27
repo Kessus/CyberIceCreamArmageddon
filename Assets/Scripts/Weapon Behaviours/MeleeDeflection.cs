@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Is able to deflect bullets (reverse their movement and allow them to damage instigators)
 public class MeleeDeflection : WeaponBehaviour
 {
     public Vector2 hitboxSize = new Vector2(1.0f, 1.0f);
@@ -19,6 +20,7 @@ public class MeleeDeflection : WeaponBehaviour
         deflectorField = GetComponent<SpriteRenderer>();
     }
 
+    //Shows and hides a weapon along with the proper force field sprite
     private void Update()
     {
         if (deflectorField.enabled)
@@ -37,6 +39,7 @@ public class MeleeDeflection : WeaponBehaviour
     {
         yield return new WaitForSeconds(hitDelay);
 
+        //Setting up the layer mask that will be used in raycasting
         LayerMask layerMask;
         if (gameObject.layer == LayerMask.NameToLayer("Player"))
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//When crossed, starts the next stage in the SceneGoalManager and re-enables the given scene blockage; only works once
 public class NextStageTrigger : MonoBehaviour
 {
     public SceneBlockage controlledBlockage;
