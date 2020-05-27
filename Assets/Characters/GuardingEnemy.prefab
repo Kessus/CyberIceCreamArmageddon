@@ -606,12 +606,12 @@ PrefabInstance:
     - target: {fileID: 7358382388535592184, guid: fbd0810fd6f404c448c7fff3b53a316c,
         type: 3}
       propertyPath: cooldownDuration
-      value: 0.3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7358382388535592184, guid: fbd0810fd6f404c448c7fff3b53a316c,
         type: 3}
       propertyPath: visibilityTime
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7358382388535592186, guid: fbd0810fd6f404c448c7fff3b53a316c,
         type: 3}

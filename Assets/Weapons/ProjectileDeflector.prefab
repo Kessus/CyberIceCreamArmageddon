@@ -133,7 +133,7 @@ MonoBehaviour:
   isAutomatic: 0
   cooldownDuration: 0.25
   visibilityTime: 0.3
-  weaponIcon: {fileID: 21300000, guid: a69fd5359c68952448de0f00ed878a71, type: 3}
+  weaponIcon: {fileID: 21300000, guid: 50e93fd6e8fa421449fe3e1985b2b26e, type: 3}
   reactToButtons: 0
 --- !u!212 &7358382388535592183
 SpriteRenderer:

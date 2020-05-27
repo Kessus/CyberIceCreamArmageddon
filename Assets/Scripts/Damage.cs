@@ -91,7 +91,7 @@ public class Damage : MonoBehaviour
         }
         else
         {
-            damage = Mathf.FloorToInt(damage * 0.3f);
+            damage = Mathf.FloorToInt(damage * 0.5f);
 
             Player.playerObject.GetComponent<Player>().damageReceived += damage;
             bodyHealth -= damage;
