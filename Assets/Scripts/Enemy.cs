@@ -97,7 +97,14 @@ public class Enemy : MonoBehaviour
         if (Player.playerObject == null || Player.playerObject.GetComponent<Player>().isDead || this.isDead)
             return;
 
-        gameObject.GetComponentInChildren<Animator>().SetBool("IsMoving", Mathf.Abs(rb.velocity.x) >= 0.5f);
+        Animator animator = gameObject.GetComponentInChildren<Animator>();
+        animator.SetBool("IsMoving", Mathf.Abs(rb.velocity.x) >= 0.5f);
+        bool isMovingRight = rb.velocity.x > 0;
+
+        //XOR operation. Either the character moves right and is facing right or is moving left and is facing left
+        bool isMovingForward = isMovingRight ^ gameObject.transform.localRotation.y != 0.0f;
+
+        animator.SetBool("IsMovingForward", isMovingForward);
 
         Vector3 playerPosition = Player.playerObject.transform.position;
         if (playerPosition.x > transform.position.x && isFacingLeft)

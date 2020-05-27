@@ -64,7 +64,17 @@ public class Player : MonoBehaviour
 
         if (movementInput != 0)
         {
-            gameObject.GetComponent<Animator>().SetBool("IsMoving", Mathf.Abs(movementInput) >= 0.5f);
+            if(Mathf.Abs(movementInput) >= 0.5f)
+            {
+                Animator animator = gameObject.GetComponent<Animator>();
+                animator.SetBool("IsMoving", true);
+                bool isMovingRight = movementInput > 0.0f;
+
+                //XOR operation. Either the character moves right and is facing right or is moving left and is facing left
+                bool isMovingForward = isMovingRight ^ gameObject.transform.localRotation.y != 0.0f;  
+
+                animator.SetBool("IsMovingForward", isMovingForward);
+            }
             rigidBody.velocity = new Vector2(movementSpeed * movementInput, rigidBody.velocity.y);
         }
         else
@@ -127,7 +137,7 @@ public class Player : MonoBehaviour
         if (hijackTarget.GetComponent<Enemy>().CanBeHijacked)
         {
             if (hijackParticleSystem != null)
-                Instantiate(hijackParticleSystem, transform.position, Quaternion.identity);
+                Instantiate(hijackParticleSystem, transform.position + (hijackTarget.transform.position - transform.position)/2, Quaternion.identity);
             AudioManager.Manager.PlaySound(hijackSoundName);
 
             hijackTarget.GetComponent<Damage>().RegisterAssimilation(GetComponent<Damage>());
