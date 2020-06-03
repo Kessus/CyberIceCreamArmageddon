@@ -21,7 +21,8 @@ public class BouncePad : MonoBehaviour
 
 
         if (bounceParticleSystem != null)
-            bounceParticleSystem.Play();
+            Instantiate(bounceParticleSystem, transform.position, Quaternion.identity);
+
         AudioManager.Manager.PlaySound(bounceSoundName);
         Vector2 resultForce = transform.up * bounceForce;
 
