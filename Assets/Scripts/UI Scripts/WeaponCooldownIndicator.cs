@@ -42,7 +42,7 @@ public class WeaponCooldownIndicator : MonoBehaviour
             relevantIcon = secondaryWeaponIcon;
             secondaryWeaponCooldownSlider.maxValue = newWeapon.cooldownDuration;
         }
-
+        ChangeWeaponCooldown(newWeapon, false);
         relevantIcon.sprite = newWeapon.weaponIcon;
     }
 

@@ -23,16 +23,24 @@ public class SceneGoalManager : MonoBehaviour
     private void Awake()
     {
         goalManager = this;
+        CurrentStageIndex = 0;
+        RemainingEnemies = stageEnemyCountGoals[0];
+        StageComplete = false;
+        StageDuration = 0.0f;
+        if(OnStageAdvance != null)
+        {
+            System.Delegate[] callbacks = OnStageAdvance.GetInvocationList();
+            foreach (StageAdvanceDelegate callback in callbacks)
+            {
+                OnStageAdvance -= callback;
+            }
+        }
     }
 
     //Setting a default value on game start
     void Start()
     {
         cameraScript = Camera.main.GetComponent<CameraFollow>();
-        CurrentStageIndex = 0;
-        RemainingEnemies = stageEnemyCountGoals[0];
-        StageComplete = false;
-        StageDuration = 0.0f;
         OnStageAdvance?.Invoke(CurrentStageIndex);
         BeginNewStage();
     }
@@ -61,12 +69,12 @@ public class SceneGoalManager : MonoBehaviour
         if (stageEnemyCountGoals.Count > CurrentStageIndex)
         {
             OnStageAdvance?.Invoke(CurrentStageIndex);
-            stageProgressionArrow.SetActive(true);
+            stageProgressionArrow?.SetActive(true);
         }
         else
         {
             StageComplete = true;
-            stageCompletionScreen.SetActive(true);
+            stageCompletionScreen?.SetActive(true);
         }
     }
 

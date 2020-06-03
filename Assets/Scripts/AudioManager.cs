@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-        AudioSource sourceToPlay = sound.sources.FirstOrDefault(s => !s.isPlaying);
+        AudioSource sourceToPlay = sound.sources.FirstOrDefault(s => s != null && !s.isPlaying);
         //Since a clip cannot be played multiple times at once from one AudioSource, a pool of required components is created here when needed
         if (sourceToPlay == null)
         {

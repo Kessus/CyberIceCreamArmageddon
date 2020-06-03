@@ -17,7 +17,7 @@ public class SpawnerManager : MonoBehaviour
     private List<Spawner> spawners;
     private int activeEnemies = 0;
 
-    public SpawnerManager()
+    private void Awake()
     {
         mainManager = this;
         spawners = new List<Spawner>();
